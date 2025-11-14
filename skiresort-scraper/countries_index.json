@@ -1,0 +1,583 @@
+[
+  {
+    "country": "Germany",
+    "slug": "germany",
+    "url": "https://www.skiresort.info/ski-resorts/germany/",
+    "resort_count": 644,
+    "ok": true
+  },
+  {
+    "country": "Japan",
+    "slug": "japan",
+    "url": "https://www.skiresort.info/ski-resorts/japan/",
+    "resort_count": 559,
+    "ok": true
+  },
+  {
+    "country": "USA",
+    "slug": "usa",
+    "url": "https://www.skiresort.info/ski-resorts/usa/",
+    "resort_count": 531,
+    "ok": true
+  },
+  {
+    "country": "Austria",
+    "slug": "austria",
+    "url": "https://www.skiresort.info/ski-resorts/austria/",
+    "resort_count": 440,
+    "ok": true
+  },
+  {
+    "country": "China",
+    "slug": "china",
+    "url": "https://www.skiresort.info/ski-resorts/china/",
+    "resort_count": 389,
+    "ok": true
+  },
+  {
+    "country": "Switzerland",
+    "slug": "switzerland",
+    "url": "https://www.skiresort.info/ski-resorts/switzerland/",
+    "resort_count": 352,
+    "ok": true
+  },
+  {
+    "country": "Czech Republic",
+    "slug": "czech-republic",
+    "url": "https://www.skiresort.info/ski-resorts/czech-republic/",
+    "resort_count": 317,
+    "ok": true
+  },
+  {
+    "country": "Canada",
+    "slug": "canada",
+    "url": "https://www.skiresort.info/ski-resorts/canada/",
+    "resort_count": 293,
+    "ok": true
+  },
+  {
+    "country": "Poland",
+    "slug": "poland",
+    "url": "https://www.skiresort.info/ski-resorts/poland/",
+    "resort_count": 290,
+    "ok": true
+  },
+  {
+    "country": "Italy",
+    "slug": "italy",
+    "url": "https://www.skiresort.info/ski-resorts/italy/",
+    "resort_count": 286,
+    "ok": true
+  },
+  {
+    "country": "Sweden",
+    "slug": "sweden",
+    "url": "https://www.skiresort.info/ski-resorts/sweden/",
+    "resort_count": 256,
+    "ok": true
+  },
+  {
+    "country": "France",
+    "slug": "france",
+    "url": "https://www.skiresort.info/ski-resorts/france/",
+    "resort_count": 251,
+    "ok": true
+  },
+  {
+    "country": "Russia",
+    "slug": "russia",
+    "url": "https://www.skiresort.info/ski-resorts/russia/",
+    "resort_count": 176,
+    "ok": true
+  },
+  {
+    "country": "Norway",
+    "slug": "norway",
+    "url": "https://www.skiresort.info/ski-resorts/norway/",
+    "resort_count": 170,
+    "ok": true
+  },
+  {
+    "country": "Slovakia",
+    "slug": "slovakia",
+    "url": "https://www.skiresort.info/ski-resorts/slovakia/",
+    "resort_count": 122,
+    "ok": true
+  },
+  {
+    "country": "Romania",
+    "slug": "romania",
+    "url": "https://www.skiresort.info/ski-resorts/romania/",
+    "resort_count": 100,
+    "ok": true
+  },
+  {
+    "country": "United Kingdom",
+    "slug": "united-kingdom",
+    "url": "https://www.skiresort.info/ski-resorts/united-kingdom/",
+    "resort_count": 84,
+    "ok": true
+  },
+  {
+    "country": "Finland",
+    "slug": "finland",
+    "url": "https://www.skiresort.info/ski-resorts/finland/",
+    "resort_count": 80,
+    "ok": true
+  },
+  {
+    "country": "Netherlands",
+    "slug": "netherlands",
+    "url": "https://www.skiresort.info/ski-resorts/netherlands/",
+    "resort_count": 63,
+    "ok": true
+  },
+  {
+    "country": "Ukraine",
+    "slug": "ukraine",
+    "url": "https://www.skiresort.info/ski-resorts/ukraine/",
+    "resort_count": 58,
+    "ok": true
+  },
+  {
+    "country": "Slovenia",
+    "slug": "slovenia",
+    "url": "https://www.skiresort.info/ski-resorts/slovenia/",
+    "resort_count": 50,
+    "ok": true
+  },
+  {
+    "country": "Turkey",
+    "slug": "turkey",
+    "url": "https://www.skiresort.info/ski-resorts/turkey/",
+    "resort_count": 41,
+    "ok": true
+  },
+  {
+    "country": "New Zealand",
+    "slug": "new-zealand",
+    "url": "https://www.skiresort.info/ski-resorts/new-zealand/",
+    "resort_count": 36,
+    "ok": true
+  },
+  {
+    "country": "Iran",
+    "slug": "iran",
+    "url": "https://www.skiresort.info/ski-resorts/iran/",
+    "resort_count": 34,
+    "ok": true
+  },
+  {
+    "country": "Spain",
+    "slug": "spain",
+    "url": "https://www.skiresort.info/ski-resorts/spain/",
+    "resort_count": 33,
+    "ok": true
+  },
+  {
+    "country": "Serbia",
+    "slug": "serbia",
+    "url": "https://www.skiresort.info/ski-resorts/serbia/",
+    "resort_count": 29,
+    "ok": true
+  },
+  {
+    "country": "Greece",
+    "slug": "greece",
+    "url": "https://www.skiresort.info/ski-resorts/greece/",
+    "resort_count": 26,
+    "ok": true
+  },
+  {
+    "country": "Bulgaria",
+    "slug": "bulgaria",
+    "url": "https://www.skiresort.info/ski-resorts/bulgaria/",
+    "resort_count": 23,
+    "ok": true
+  },
+  {
+    "country": "Kyrgyzstan",
+    "slug": "kyrgyzstan",
+    "url": "https://www.skiresort.info/ski-resorts/kyrgyzstan/",
+    "resort_count": 23,
+    "ok": true
+  },
+  {
+    "country": "Bosnia and Herzegovina",
+    "slug": "bosnia-and-herzegovina",
+    "url": "https://www.skiresort.info/ski-resorts/bosnia-and-herzegovina/",
+    "resort_count": 22,
+    "ok": true
+  },
+  {
+    "country": "India",
+    "slug": "india",
+    "url": "https://www.skiresort.info/ski-resorts/india/",
+    "resort_count": 22,
+    "ok": true
+  },
+  {
+    "country": "South Korea",
+    "slug": "south-korea",
+    "url": "https://www.skiresort.info/ski-resorts/south-korea/",
+    "resort_count": 21,
+    "ok": true
+  },
+  {
+    "country": "Argentina",
+    "slug": "argentina",
+    "url": "https://www.skiresort.info/ski-resorts/argentina/",
+    "resort_count": 20,
+    "ok": true
+  },
+  {
+    "country": "Chile",
+    "slug": "chile",
+    "url": "https://www.skiresort.info/ski-resorts/chile/",
+    "resort_count": 19,
+    "ok": true
+  },
+  {
+    "country": "Latvia",
+    "slug": "latvia",
+    "url": "https://www.skiresort.info/ski-resorts/latvia/",
+    "resort_count": 18,
+    "ok": true
+  },
+  {
+    "country": "Australia",
+    "slug": "australia",
+    "url": "https://www.skiresort.info/ski-resorts/australia/",
+    "resort_count": 15,
+    "ok": true
+  },
+  {
+    "country": "Hungary",
+    "slug": "hungary",
+    "url": "https://www.skiresort.info/ski-resorts/hungary/",
+    "resort_count": 15,
+    "ok": true
+  },
+  {
+    "country": "Denmark",
+    "slug": "denmark",
+    "url": "https://www.skiresort.info/ski-resorts/denmark/",
+    "resort_count": 13,
+    "ok": true
+  },
+  {
+    "country": "Greenland",
+    "slug": "greenland",
+    "url": "https://www.skiresort.info/ski-resorts/greenland/",
+    "resort_count": 13,
+    "ok": true
+  },
+  {
+    "country": "Iceland",
+    "slug": "iceland",
+    "url": "https://www.skiresort.info/ski-resorts/iceland/",
+    "resort_count": 13,
+    "ok": true
+  },
+  {
+    "country": "Belgium",
+    "slug": "belgium",
+    "url": "https://www.skiresort.info/ski-resorts/belgium/",
+    "resort_count": 11,
+    "ok": true
+  },
+  {
+    "country": "Croatia",
+    "slug": "croatia",
+    "url": "https://www.skiresort.info/ski-resorts/croatia/",
+    "resort_count": 11,
+    "ok": true
+  },
+  {
+    "country": "Lithuania",
+    "slug": "lithuania",
+    "url": "https://www.skiresort.info/ski-resorts/lithuania/",
+    "resort_count": 11,
+    "ok": true
+  },
+  {
+    "country": "Montenegro",
+    "slug": "montenegro",
+    "url": "https://www.skiresort.info/ski-resorts/montenegro/",
+    "resort_count": 11,
+    "ok": true
+  },
+  {
+    "country": "North Macedonia",
+    "slug": "north-macedonia",
+    "url": "https://www.skiresort.info/ski-resorts/north-macedonia/",
+    "resort_count": 9,
+    "ok": true
+  },
+  {
+    "country": "Georgia",
+    "slug": "georgia",
+    "url": "https://www.skiresort.info/ski-resorts/georgia/",
+    "resort_count": 7,
+    "ok": true
+  },
+  {
+    "country": "Kazakhstan",
+    "slug": "kazakhstan",
+    "url": "https://www.skiresort.info/ski-resorts/kazakhstan/",
+    "resort_count": 7,
+    "ok": true
+  },
+  {
+    "country": "Lebanon",
+    "slug": "lebanon",
+    "url": "https://www.skiresort.info/ski-resorts/lebanon/",
+    "resort_count": 7,
+    "ok": true
+  },
+  {
+    "country": "Albania",
+    "slug": "albania",
+    "url": "https://www.skiresort.info/ski-resorts/albania/",
+    "resort_count": 6,
+    "ok": true
+  },
+  {
+    "country": "Estonia",
+    "slug": "estonia",
+    "url": "https://www.skiresort.info/ski-resorts/estonia/",
+    "resort_count": 6,
+    "ok": true
+  },
+  {
+    "country": "Uzbekistan",
+    "slug": "uzbekistan",
+    "url": "https://www.skiresort.info/ski-resorts/uzbekistan/",
+    "resort_count": 6,
+    "ok": true
+  },
+  {
+    "country": "United Arab Emirates",
+    "slug": "united-arab-emirates",
+    "url": "https://www.skiresort.info/ski-resorts/united-arab-emirates/",
+    "resort_count": 6,
+    "ok": true
+  },
+  {
+    "country": "Belarus",
+    "slug": "belarus",
+    "url": "https://www.skiresort.info/ski-resorts/belarus/",
+    "resort_count": 6,
+    "ok": true
+  },
+  {
+    "country": "Kosovo",
+    "slug": "kosovo",
+    "url": "https://www.skiresort.info/ski-resorts/kosovo/",
+    "resort_count": 5,
+    "ok": true
+  },
+  {
+    "country": "Malaysia",
+    "slug": "malaysia",
+    "url": "https://www.skiresort.info/ski-resorts/malaysia/",
+    "resort_count": 5,
+    "ok": true
+  },
+  {
+    "country": "Morocco",
+    "slug": "morocco",
+    "url": "https://www.skiresort.info/ski-resorts/morocco/",
+    "resort_count": 5,
+    "ok": true
+  },
+  {
+    "country": "Turkmenistan",
+    "slug": "turkmenistan",
+    "url": "https://www.skiresort.info/ski-resorts/turkmenistan/",
+    "resort_count": 5,
+    "ok": true
+  },
+  {
+    "country": "Andorra",
+    "slug": "andorra",
+    "url": "https://www.skiresort.info/ski-resorts/andorra/",
+    "resort_count": 4,
+    "ok": true
+  },
+  {
+    "country": "North Korea",
+    "slug": "north-korea",
+    "url": "https://www.skiresort.info/ski-resorts/north-korea/",
+    "resort_count": 4,
+    "ok": true
+  },
+  {
+    "country": "Armenia",
+    "slug": "armenia",
+    "url": "https://www.skiresort.info/ski-resorts/armenia/",
+    "resort_count": 3,
+    "ok": true
+  },
+  {
+    "country": "Azerbaijan",
+    "slug": "azerbaijan",
+    "url": "https://www.skiresort.info/ski-resorts/azerbaijan/",
+    "resort_count": 3,
+    "ok": true
+  },
+  {
+    "country": "Brazil",
+    "slug": "brazil",
+    "url": "https://www.skiresort.info/ski-resorts/brazil/",
+    "resort_count": 3,
+    "ok": true
+  },
+  {
+    "country": "Qatar",
+    "slug": "qatar",
+    "url": "https://www.skiresort.info/ski-resorts/qatar/",
+    "resort_count": 3,
+    "ok": true
+  },
+  {
+    "country": "Liechtenstein",
+    "slug": "liechtenstein",
+    "url": "https://www.skiresort.info/ski-resorts/liechtenstein/",
+    "resort_count": 3,
+    "ok": true
+  },
+  {
+    "country": "Pakistan",
+    "slug": "pakistan",
+    "url": "https://www.skiresort.info/ski-resorts/pakistan/",
+    "resort_count": 3,
+    "ok": true
+  },
+  {
+    "country": "Portugal",
+    "slug": "portugal",
+    "url": "https://www.skiresort.info/ski-resorts/portugal/",
+    "resort_count": 3,
+    "ok": true
+  },
+  {
+    "country": "South Africa",
+    "slug": "south-africa",
+    "url": "https://www.skiresort.info/ski-resorts/south-africa/",
+    "resort_count": 3,
+    "ok": true
+  },
+  {
+    "country": "Iraq",
+    "slug": "iraq",
+    "url": "https://www.skiresort.info/ski-resorts/iraq/",
+    "resort_count": 2,
+    "ok": true
+  },
+  {
+    "country": "Ireland",
+    "slug": "ireland",
+    "url": "https://www.skiresort.info/ski-resorts/ireland/",
+    "resort_count": 2,
+    "ok": true
+  },
+  {
+    "country": "Israel",
+    "slug": "israel",
+    "url": "https://www.skiresort.info/ski-resorts/israel/",
+    "resort_count": 2,
+    "ok": true
+  },
+  {
+    "country": "Nepal",
+    "slug": "nepal",
+    "url": "https://www.skiresort.info/ski-resorts/nepal/",
+    "resort_count": 2,
+    "ok": true
+  },
+  {
+    "country": "Peru",
+    "slug": "peru",
+    "url": "https://www.skiresort.info/ski-resorts/peru/",
+    "resort_count": 2,
+    "ok": true
+  },
+  {
+    "country": "Thailand",
+    "slug": "thailand",
+    "url": "https://www.skiresort.info/ski-resorts/thailand/",
+    "resort_count": 2,
+    "ok": true
+  },
+  {
+    "country": "Egypt",
+    "slug": "egypt",
+    "url": "https://www.skiresort.info/ski-resorts/egypt/",
+    "resort_count": 1,
+    "ok": true
+  },
+  {
+    "country": "Algeria",
+    "slug": "algeria",
+    "url": "https://www.skiresort.info/ski-resorts/algeria/",
+    "resort_count": 1,
+    "ok": true
+  },
+  {
+    "country": "Bahrain",
+    "slug": "bahrain",
+    "url": "https://www.skiresort.info/ski-resorts/bahrain/",
+    "resort_count": 1,
+    "ok": true
+  },
+  {
+    "country": "Indonesia",
+    "slug": "indonesia",
+    "url": "https://www.skiresort.info/ski-resorts/indonesia/",
+    "resort_count": 1,
+    "ok": true
+  },
+  {
+    "country": "Lesotho",
+    "slug": "lesotho",
+    "url": "https://www.skiresort.info/ski-resorts/lesotho/",
+    "resort_count": 1,
+    "ok": true
+  },
+  {
+    "country": "Mexico",
+    "slug": "mexico",
+    "url": "https://www.skiresort.info/ski-resorts/mexico/",
+    "resort_count": 1,
+    "ok": true
+  },
+  {
+    "country": "Mongolia",
+    "slug": "mongolia",
+    "url": "https://www.skiresort.info/ski-resorts/mongolia/",
+    "resort_count": 1,
+    "ok": true
+  },
+  {
+    "country": "Namibia",
+    "slug": "namibia",
+    "url": "https://www.skiresort.info/ski-resorts/namibia/",
+    "resort_count": 1,
+    "ok": true
+  },
+  {
+    "country": "Singapore",
+    "slug": "singapore",
+    "url": "https://www.skiresort.info/ski-resorts/singapore/",
+    "resort_count": 1,
+    "ok": true
+  },
+  {
+    "country": "Cyprus",
+    "slug": "cyprus",
+    "url": "https://www.skiresort.info/ski-resorts/cyprus/",
+    "resort_count": 1,
+    "ok": true
+  }
+]
