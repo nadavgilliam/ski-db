@@ -1,17 +1,27 @@
 # Node
 server/node_modules/
 
-# Secrets
-server/.env
+# Env / secrets
+.env
+*/.env
 
-# Python virtual environments (if you have any)
+# Python virtual environments
 venv/
 */venv/
+.venv/
+*/.venv/
 
-# SQLite database files (actual data, not schema)
+# Python cache
+__pycache__/
+*/__pycache__/
+
+# SQLite databases & backups
 *.db
 *.db-shm
 *.db-wal
+*.db.bak
+*.db-shm.bak
+*.db-wal.bak
 
-# macOS files
+# macOS
 .DS_Store
