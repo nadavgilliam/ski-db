@@ -1,0 +1,353 @@
+[
+  {
+    "type": "flight-offer",
+    "id": "1",
+    "source": "GDS",
+    "instantTicketingRequired": false,
+    "nonHomogeneous": false,
+    "oneWay": false,
+    "isUpsellOffer": false,
+    "lastTicketingDate": "2025-12-20",
+    "lastTicketingDateTime": "2025-12-20",
+    "numberOfBookableSeats": 9,
+    "itineraries": [
+      {
+        "duration": "PT10H30M",
+        "segments": [
+          {
+            "departure": {
+              "iataCode": "TLV",
+              "terminal": "3",
+              "at": "2025-12-20T08:35:00"
+            },
+            "arrival": {
+              "iataCode": "FCO",
+              "terminal": "3",
+              "at": "2025-12-20T11:25:00"
+            },
+            "carrierCode": "AZ",
+            "number": "815",
+            "aircraft": {
+              "code": "32Q"
+            },
+            "operating": {
+              "carrierCode": "AZ"
+            },
+            "duration": "PT3H50M",
+            "id": "1",
+            "numberOfStops": 0,
+            "blacklistedInEU": false
+          },
+          {
+            "departure": {
+              "iataCode": "FCO",
+              "terminal": "1",
+              "at": "2025-12-20T16:30:00"
+            },
+            "arrival": {
+              "iataCode": "GVA",
+              "terminal": "1",
+              "at": "2025-12-20T18:05:00"
+            },
+            "carrierCode": "AZ",
+            "number": "578",
+            "aircraft": {
+              "code": "221"
+            },
+            "operating": {
+              "carrierCode": "AZ"
+            },
+            "duration": "PT1H35M",
+            "id": "2",
+            "numberOfStops": 0,
+            "blacklistedInEU": false
+          }
+        ]
+      },
+      {
+        "duration": "PT7H15M",
+        "segments": [
+          {
+            "departure": {
+              "iataCode": "GVA",
+              "terminal": "1",
+              "at": "2025-12-27T18:55:00"
+            },
+            "arrival": {
+              "iataCode": "FCO",
+              "terminal": "1",
+              "at": "2025-12-27T20:30:00"
+            },
+            "carrierCode": "AZ",
+            "number": "577",
+            "aircraft": {
+              "code": "221"
+            },
+            "operating": {
+              "carrierCode": "AZ"
+            },
+            "duration": "PT1H35M",
+            "id": "3",
+            "numberOfStops": 0,
+            "blacklistedInEU": false
+          },
+          {
+            "departure": {
+              "iataCode": "FCO",
+              "terminal": "1",
+              "at": "2025-12-27T22:50:00"
+            },
+            "arrival": {
+              "iataCode": "TLV",
+              "terminal": "3",
+              "at": "2025-12-28T03:10:00"
+            },
+            "carrierCode": "AZ",
+            "number": "810",
+            "aircraft": {
+              "code": "32Q"
+            },
+            "operating": {
+              "carrierCode": "AZ"
+            },
+            "duration": "PT3H20M",
+            "id": "4",
+            "numberOfStops": 0,
+            "blacklistedInEU": false
+          }
+        ]
+      }
+    ],
+    "price": {
+      "currency": "EUR",
+      "total": "336.19",
+      "base": "171.00",
+      "fees": [
+        {
+          "amount": "0.00",
+          "type": "SUPPLIER"
+        },
+        {
+          "amount": "0.00",
+          "type": "TICKETING"
+        }
+      ],
+      "grandTotal": "336.19"
+    },
+    "pricingOptions": {
+      "fareType": [
+        "PUBLISHED"
+      ],
+      "includedCheckedBagsOnly": false
+    },
+    "validatingAirlineCodes": [
+      "AZ"
+    ],
+    "travelerPricings": [
+      {
+        "travelerId": "1",
+        "fareOption": "STANDARD",
+        "travelerType": "ADULT",
+        "price": {
+          "currency": "EUR",
+          "total": "336.19",
+          "base": "171.00"
+        },
+        "fareDetailsBySegment": [
+          {
+            "segmentId": "1",
+            "cabin": "ECONOMY",
+            "fareBasis": "LRLGME1",
+            "brandedFare": "ECOLIGHT",
+            "brandedFareLabel": "ECONOMY LIGHT",
+            "class": "L",
+            "includedCheckedBags": {
+              "quantity": 0
+            },
+            "includedCabinBags": {
+              "quantity": 1
+            },
+            "amenities": [
+              {
+                "description": "UP TO 50LB 23KG 62LI 158LCM",
+                "isChargeable": true,
+                "amenityType": "BAGGAGE",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              },
+              {
+                "description": "CARRY8KG 18LB UPTO46LI 118LCM",
+                "isChargeable": true,
+                "amenityType": "BAGGAGE",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              },
+              {
+                "description": "ADVANCE SEAT RESERVATION",
+                "isChargeable": true,
+                "amenityType": "PRE_RESERVED_SEAT",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              },
+              {
+                "description": "SNACK",
+                "isChargeable": false,
+                "amenityType": "MEAL",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              }
+            ]
+          },
+          {
+            "segmentId": "2",
+            "cabin": "ECONOMY",
+            "fareBasis": "LRLGME1",
+            "brandedFare": "ECOLIGHT",
+            "brandedFareLabel": "ECONOMY LIGHT",
+            "class": "L",
+            "includedCheckedBags": {
+              "quantity": 0
+            },
+            "includedCabinBags": {
+              "quantity": 1
+            },
+            "amenities": [
+              {
+                "description": "UP TO 50LB 23KG 62LI 158LCM",
+                "isChargeable": true,
+                "amenityType": "BAGGAGE",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              },
+              {
+                "description": "CARRY8KG 18LB UPTO46LI 118LCM",
+                "isChargeable": true,
+                "amenityType": "BAGGAGE",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              },
+              {
+                "description": "ADVANCE SEAT RESERVATION",
+                "isChargeable": true,
+                "amenityType": "PRE_RESERVED_SEAT",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              },
+              {
+                "description": "SNACK",
+                "isChargeable": false,
+                "amenityType": "MEAL",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              }
+            ]
+          },
+          {
+            "segmentId": "3",
+            "cabin": "ECONOMY",
+            "fareBasis": "XRLGME1",
+            "brandedFare": "ECOLIGHT",
+            "brandedFareLabel": "ECONOMY LIGHT",
+            "class": "X",
+            "includedCheckedBags": {
+              "quantity": 0
+            },
+            "includedCabinBags": {
+              "quantity": 1
+            },
+            "amenities": [
+              {
+                "description": "UP TO 50LB 23KG 62LI 158LCM",
+                "isChargeable": true,
+                "amenityType": "BAGGAGE",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              },
+              {
+                "description": "CARRY8KG 18LB UPTO46LI 118LCM",
+                "isChargeable": true,
+                "amenityType": "BAGGAGE",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              },
+              {
+                "description": "ADVANCE SEAT RESERVATION",
+                "isChargeable": true,
+                "amenityType": "PRE_RESERVED_SEAT",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              },
+              {
+                "description": "SNACK",
+                "isChargeable": false,
+                "amenityType": "MEAL",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              }
+            ]
+          },
+          {
+            "segmentId": "4",
+            "cabin": "ECONOMY",
+            "fareBasis": "XRLGME1",
+            "brandedFare": "ECOLIGHT",
+            "brandedFareLabel": "ECONOMY LIGHT",
+            "class": "X",
+            "includedCheckedBags": {
+              "quantity": 0
+            },
+            "includedCabinBags": {
+              "quantity": 1
+            },
+            "amenities": [
+              {
+                "description": "UP TO 50LB 23KG 62LI 158LCM",
+                "isChargeable": true,
+                "amenityType": "BAGGAGE",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              },
+              {
+                "description": "CARRY8KG 18LB UPTO46LI 118LCM",
+                "isChargeable": true,
+                "amenityType": "BAGGAGE",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              },
+              {
+                "description": "ADVANCE SEAT RESERVATION",
+                "isChargeable": true,
+                "amenityType": "PRE_RESERVED_SEAT",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              },
+              {
+                "description": "SNACK",
+                "isChargeable": false,
+                "amenityType": "MEAL",
+                "amenityProvider": {
+                  "name": "BrandedFare"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

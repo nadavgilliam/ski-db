@@ -1,0 +1,343 @@
+Hotel List Response:
+[
+  {
+    "chainCode": "YX",
+    "iataCode": "MFX",
+    "dupeId": 700159650,
+    "name": "ALTAPURA",
+    "hotelId": "YXMFXALT",
+    "geoCode": {
+      "latitude": 45.29685,
+      "longitude": 6.5779
+    },
+    "address": {
+      "countryCode": "FR",
+      "postalCode": "73440",
+      "cityName": "VAL THORENS",
+      "lines": [
+        "ROUTE DU SOLEIL 1"
+      ]
+    },
+    "distance": {
+      "value": 0.19,
+      "unit": "KM"
+    },
+    "lastUpdate": "2025-06-03T10:18:53"
+  },
+  {
+    "chainCode": "VP",
+    "iataCode": "CVF",
+    "dupeId": 502347125,
+    "name": "HOTEL KOH-I NOR",
+    "hotelId": "VPCVF199",
+    "geoCode": {
+      "latitude": 45.29826,
+      "longitude": 6.58567
+    },
+    "address": {
+      "countryCode": "FR",
+      "postalCode": "73440",
+      "cityName": "Courchevel",
+      "lines": [
+        "RUE DE GEBROULAZ"
+      ]
+    },
+    "distance": {
+      "value": 0.43,
+      "unit": "KM"
+    },
+    "lastUpdate": "2025-09-30T09:00:21"
+  },
+  {
+    "chainCode": "ON",
+    "iataCode": "QMU",
+    "dupeId": 700091624,
+    "name": "HOTEL CLUB DU SOLEIL PIERRE BLANCHES",
+    "hotelId": "ONQMUPBL",
+    "geoCode": {
+      "latitude": 45.32433,
+      "longitude": 6.53689
+    },
+    "address": {
+      "countryCode": "FR",
+      "postalCode": "73400",
+      "cityName": "LES MENUIRES",
+      "lines": [
+        "IMMEUBLE LE BRELIN"
+      ]
+    },
+    "distance": {
+      "value": 4.51,
+      "unit": "KM"
+    },
+    "lastUpdate": "2023-06-15T10:06:00"
+  },
+  {
+    "chainCode": "OI",
+    "iataCode": "MFX",
+    "dupeId": 501571717,
+    "name": "HOTEL L HELIOS",
+    "hotelId": "OIMFXHEL",
+    "geoCode": {
+      "latitude": 45.39611,
+      "longitude": 6.56877
+    },
+    "address": {
+      "countryCode": "FR",
+      "postalCode": "73550",
+      "cityName": "Meribel",
+      "lines": [
+        "CHEMIN DURUPT",
+        "ROUTE DE LA RENARDE"
+      ]
+    },
+    "distance": {
+      "value": 11.01,
+      "unit": "KM"
+    },
+    "masterChainCode": "LK",
+    "lastUpdate": "2025-10-07T09:03:41"
+  },
+  {
+    "chainCode": "HS",
+    "iataCode": "MFX",
+    "dupeId": 501525458,
+    "name": "L' HELIOS CHATEAUX ET HOTELS COLLECTION",
+    "hotelId": "HSMFXAAG",
+    "geoCode": {
+      "latitude": 45.39817,
+      "longitude": 6.5691
+    },
+    "address": {
+      "countryCode": "FR",
+      "postalCode": "73550",
+      "cityName": "MERIBEL",
+      "lines": [
+        "ROUTE DE LA RENARDE - CHEMIN DURUPT"
+      ]
+    },
+    "distance": {
+      "value": 11.23,
+      "unit": "KM"
+    },
+    "lastUpdate": "2025-10-07T09:03:37"
+  },
+  {
+    "chainCode": "RT",
+    "iataCode": "CVF",
+    "dupeId": 700060149,
+    "name": "MERCURE COURCHEVEL 3*",
+    "hotelId": "RTCVFCOU",
+    "geoCode": {
+      "latitude": 45.40838,
+      "longitude": 6.63257
+    },
+    "address": {
+      "countryCode": "FR",
+      "postalCode": "73120",
+      "cityName": "COURCHEVEL",
+      "lines": [
+        "JARDIN ALPIN"
+      ]
+    },
+    "distance": {
+      "value": 13,
+      "unit": "KM"
+    },
+    "masterChainCode": "RT",
+    "lastUpdate": "2025-06-03T10:17:19"
+  },
+  {
+    "chainCode": "LW",
+    "iataCode": "CVF",
+    "dupeId": 700024784,
+    "name": "HOTEL LES AIRELLES",
+    "hotelId": "LWCVF623",
+    "geoCode": {
+      "latitude": 45.40881,
+      "longitude": 6.63379
+    },
+    "address": {
+      "countryCode": "FR",
+      "postalCode": "73120",
+      "cityName": "COURCHEVEL",
+      "lines": [
+        "LE JARDIN ALPIN"
+      ]
+    },
+    "distance": {
+      "value": 13.07,
+      "unit": "KM"
+    },
+    "lastUpdate": "2025-06-03T10:20:30"
+  },
+  {
+    "chainCode": "YX",
+    "iataCode": "CVF",
+    "dupeId": 700189757,
+    "name": "L APOGEE COURCHEVEL",
+    "hotelId": "YXCVFLAC",
+    "geoCode": {
+      "latitude": 45.40976,
+      "longitude": 6.63428
+    },
+    "address": {
+      "countryCode": "FR",
+      "postalCode": "73120",
+      "cityName": "COURCHEVEL",
+      "lines": [
+        "5 RUE EMILE ALLAIS",
+        "JARDIN ALPIN"
+      ]
+    },
+    "distance": {
+      "value": 13.19,
+      "unit": "KM"
+    },
+    "lastUpdate": "2025-06-03T10:18:34"
+  },
+  {
+    "chainCode": "DS",
+    "iataCode": "CVF",
+    "dupeId": 501450481,
+    "name": "HOTEL DES TROIS VALLEES",
+    "hotelId": "DSCVFDES",
+    "geoCode": {
+      "latitude": 45.41489,
+      "longitude": 6.63147
+    },
+    "address": {
+      "countryCode": "FR",
+      "postalCode": "73120",
+      "cityName": "COURCHEVEL",
+      "lines": [
+        "RUE PARK CITY"
+      ]
+    },
+    "distance": {
+      "value": 13.66,
+      "unit": "KM"
+    },
+    "lastUpdate": "2025-10-09T09:03:49"
+  },
+  {
+    "chainCode": "VP",
+    "iataCode": "CVF",
+    "dupeId": 502347126,
+    "name": "LA SIVOLIERE",
+    "hotelId": "VPCVF201",
+    "geoCode": {
+      "latitude": 45.4159,
+      "longitude": 6.62849
+    },
+    "address": {
+      "countryCode": "FR",
+      "postalCode": "73120",
+      "cityName": "Courchevel",
+      "lines": [
+        "RUE DES CHENUS"
+      ]
+    },
+    "distance": {
+      "value": 13.7,
+      "unit": "KM"
+    },
+    "lastUpdate": "2025-10-07T09:03:49"
+  },
+  {
+    "chainCode": "LW",
+    "iataCode": "CVF",
+    "dupeId": 700218679,
+    "name": "HOTEL LE K2",
+    "hotelId": "LWCVF639",
+    "geoCode": {
+      "latitude": 45.41393,
+      "longitude": 6.63765
+    },
+    "address": {
+      "countryCode": "FR",
+      "postalCode": "73120",
+      "cityName": "COURCHEVEL",
+      "lines": [
+        "RUE DES CLAIRNES"
+      ]
+    },
+    "distance": {
+      "value": 13.71,
+      "unit": "KM"
+    },
+    "lastUpdate": "2025-06-03T10:20:30"
+  },
+  {
+    "chainCode": "WB",
+    "iataCode": "CVF",
+    "dupeId": 700024786,
+    "name": "LE CHABICHOU",
+    "hotelId": "WBCVFWBC",
+    "geoCode": {
+      "latitude": 45.41603,
+      "longitude": 6.62995
+    },
+    "address": {
+      "countryCode": "FR",
+      "postalCode": "73120",
+      "cityName": "COURCHEVEL",
+      "lines": [
+        "RUE DES CHENUS"
+      ]
+    },
+    "distance": {
+      "value": 13.75,
+      "unit": "KM"
+    },
+    "lastUpdate": "2025-06-03T10:17:58"
+  },
+  {
+    "chainCode": "YX",
+    "iataCode": "CVF",
+    "dupeId": 700141797,
+    "name": "LES SUITES DE LA POTINIERE",
+    "hotelId": "YXCVFLSP",
+    "geoCode": {
+      "latitude": 45.41811,
+      "longitude": 6.63283
+    },
+    "address": {
+      "countryCode": "FR",
+      "postalCode": "73120",
+      "cityName": "COURCHEVEL",
+      "lines": [
+        "RUE DE PLANTRET 53279"
+      ]
+    },
+    "distance": {
+      "value": 14.04,
+      "unit": "KM"
+    },
+    "lastUpdate": "2025-06-03T10:18:34"
+  },
+  {
+    "chainCode": "HS",
+    "iataCode": "CVF",
+    "dupeId": 501525336,
+    "name": "L'EDELWEISS",
+    "hotelId": "HSCVFAAF",
+    "geoCode": {
+      "latitude": 45.38192,
+      "longitude": 6.72219
+    },
+    "address": {
+      "countryCode": "FR",
+      "postalCode": "73710",
+      "cityName": "PRALOGNAN LA VANOISE",
+      "lines": [
+        "CH DU COL DE LA LOUZA"
+      ]
+    },
+    "distance": {
+      "value": 14.54,
+      "unit": "KM"
+    },
+    "lastUpdate": "2025-10-07T09:03:23"
+  }
+]
