@@ -1,4 +1,4 @@
-const aiService = require('./services/aiService');
+const aiService = require('../services/aiService');
 
 async function testAIService() {
   console.log('Testing AI Service with Tool Use...\n');

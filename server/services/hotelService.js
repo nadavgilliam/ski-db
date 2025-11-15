@@ -38,8 +38,8 @@ class HotelService {
   }
 
   formatHotelResults(hotels, centerLat, centerLon) {
-    // Take top 10 closest hotels
-    return hotels.slice(0, 10).map(hotel => ({
+    // CHANGED FROM 10 TO 5 - Only return top 5 closest hotels
+    return hotels.slice(0, 5).map(hotel => ({
       id: hotel.id,
       name: hotel.name,
       price: {
