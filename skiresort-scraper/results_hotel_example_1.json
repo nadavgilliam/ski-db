@@ -1,0 +1,728 @@
+{
+  "hotel_name": "Hotel Example 1",
+  "hotel_coords": [
+    45.29793969030922,
+    6.5832264545347305
+  ],
+  "lifts": {
+    "nearest_3": [
+      {
+        "name": "Castor et Pollux",
+        "type": "unknown",
+        "station_type": "exit",
+        "distance_m": 105.3,
+        "distance_note": "to lift station",
+        "priority": 7,
+        "coords": [
+          45.2976239,
+          6.5823937
+        ]
+      },
+      {
+        "name": "(unnamed lift)",
+        "type": "unknown",
+        "station_type": "exit",
+        "distance_m": 155.7,
+        "distance_note": "to lift station",
+        "priority": 7,
+        "coords": [
+          45.2970104,
+          6.582766
+        ]
+      },
+      {
+        "name": "Pionniers",
+        "type": "chair_lift",
+        "station_type": "entry",
+        "distance_m": 440.3,
+        "distance_note": "to lift station",
+        "priority": 3,
+        "coords": [
+          45.2952802,
+          6.5820636
+        ]
+      }
+    ],
+    "total_within_radius": 3,
+    "search_radius_m": 500
+  },
+  "runs": {
+    "nearest_3": [
+      {
+        "name": "(unnamed)",
+        "difficulty": "novice",
+        "distance_m": 64.4,
+        "distance_note": "to nearest point on run",
+        "nearest_point_coords": [
+          45.29792839291355,
+          6.5826484567105465
+        ],
+        "centroid_coords": [
+          45.29763231410285,
+          6.5826367586286745
+        ]
+      },
+      {
+        "name": "La Val Tho",
+        "difficulty": "easy",
+        "distance_m": 73.5,
+        "distance_note": "to nearest point on run",
+        "nearest_point_coords": [
+          45.298152599999995,
+          6.5826396
+        ],
+        "centroid_coords": [
+          45.29737802127378,
+          6.582163746281914
+        ]
+      },
+      {
+        "name": "Voie Lactée",
+        "difficulty": "novice",
+        "distance_m": 105.3,
+        "distance_note": "to nearest point on run",
+        "nearest_point_coords": [
+          45.29762389999999,
+          6.582393699999999
+        ],
+        "centroid_coords": [
+          45.296571523621346,
+          6.58252158938566
+        ]
+      }
+    ],
+    "total_within_radius": 7,
+    "difficulty_distribution": {
+      "novice": 3,
+      "easy": 4
+    },
+    "search_radius_m": 500
+  },
+  "ski_schools": {
+    "nearest_3": [
+      {
+        "name": "École du Ski Français",
+        "distance_m": 309.4,
+        "phone": null,
+        "website": null,
+        "coords": [
+          45.29646269999999,
+          6.581406
+        ]
+      }
+    ],
+    "total_within_radius": 1,
+    "hotel_has_ski_school": false,
+    "search_radius_m": 500
+  },
+  "pass_offices": {
+    "nearest_3": [],
+    "total_within_radius": 0,
+    "hotel_has_pass_office": false,
+    "search_radius_m": 500
+  },
+  "public_transport": {
+    "stops": [
+      {
+        "name": "Église",
+        "type": "bus_stop",
+        "distance_m": 31.9,
+        "coords": [
+          45.2980802,
+          6.5834324
+        ]
+      },
+      {
+        "name": "Maison de Val Thorens",
+        "type": "bus_stop",
+        "distance_m": 170.4,
+        "coords": [
+          45.2985855,
+          6.5820021
+        ]
+      },
+      {
+        "name": "Les Névés",
+        "type": "bus_stop",
+        "distance_m": 171.1,
+        "coords": [
+          45.2977688,
+          6.5847446
+        ]
+      },
+      {
+        "name": "Parking P0",
+        "type": "bus_stop",
+        "distance_m": 199.0,
+        "coords": [
+          45.2991939,
+          6.5830976
+        ]
+      },
+      {
+        "name": "Place Péclet",
+        "type": "bus_stop",
+        "distance_m": 236.5,
+        "coords": [
+          45.2966344,
+          6.5842604
+        ]
+      },
+      {
+        "name": "Gare Routière",
+        "type": "bus_station",
+        "distance_m": 364.4,
+        "coords": [
+          45.2976762,
+          6.5799749
+        ]
+      },
+      {
+        "name": "Place des Arolles",
+        "type": "bus_station",
+        "distance_m": 370.8,
+        "coords": [
+          45.297999,
+          6.579897
+        ]
+      },
+      {
+        "name": "Montagnettes",
+        "type": "bus_stop",
+        "distance_m": 378.9,
+        "coords": [
+          45.2965603,
+          6.5804443
+        ]
+      },
+      {
+        "name": "Arolles",
+        "type": "bus_stop",
+        "distance_m": 487.7,
+        "coords": [
+          45.2980014,
+          6.5788462
+        ]
+      },
+      {
+        "name": "Montana",
+        "type": "bus_stop",
+        "distance_m": 494.5,
+        "coords": [
+          45.296777,
+          6.5791029
+        ]
+      }
+    ],
+    "total_within_radius": 10,
+    "search_radius_m": 500
+  },
+  "parking": {
+    "lots": [
+      {
+        "name": "Parking P0",
+        "type": "parking",
+        "distance_m": 195.5,
+        "fee": "yes",
+        "capacity": null,
+        "coords": [
+          45.299304818217045,
+          6.583484370843883
+        ]
+      },
+      {
+        "name": "Parking P1",
+        "type": "parking",
+        "distance_m": 330.9,
+        "fee": "yes",
+        "capacity": null,
+        "coords": [
+          45.2984564,
+          6.5803463
+        ]
+      }
+    ],
+    "total_within_radius": 2,
+    "search_radius_m": 500
+  },
+  "food_stats": {
+    "restaurants_like": 32,
+    "bars_like": 9,
+    "nightclubs": 1,
+    "nightlife_total": 10,
+    "search_radius_m": 500
+  },
+  "shops": {
+    "total_shops": 44,
+    "ski_rental_count": 8,
+    "shops_list": [
+      {
+        "name": "Coopérative Laitière de Moûtiers",
+        "shop": "cheese",
+        "is_ski_rental": false,
+        "distance_m": 102.6,
+        "coords": [
+          45.2985432,
+          6.5835628
+        ]
+      },
+      {
+        "name": "Goitschel Sports Skiset",
+        "shop": "sports",
+        "is_ski_rental": true,
+        "distance_m": 104.0,
+        "coords": [
+          45.2983079,
+          6.5824521
+        ]
+      },
+      {
+        "name": "Lavomatic",
+        "shop": "laundry",
+        "is_ski_rental": false,
+        "distance_m": 116.8,
+        "coords": [
+          45.2984531,
+          6.5824728
+        ]
+      },
+      {
+        "name": "Aurel Coiffure",
+        "shop": "hairdresser",
+        "is_ski_rental": false,
+        "distance_m": 143.5,
+        "coords": [
+          45.2973704,
+          6.5842302
+        ]
+      },
+      {
+        "name": "Atout Services",
+        "shop": "doityourself",
+        "is_ski_rental": false,
+        "distance_m": 159.5,
+        "coords": [
+          45.2972578,
+          6.5842814
+        ]
+      },
+      {
+        "name": "Sherpa",
+        "shop": "supermarket",
+        "is_ski_rental": false,
+        "distance_m": 166.1,
+        "coords": [
+          45.2971589,
+          6.5842237
+        ]
+      },
+      {
+        "name": "Skiset",
+        "shop": "sports",
+        "is_ski_rental": true,
+        "distance_m": 186.8,
+        "coords": [
+          45.2970209,
+          6.58428
+        ]
+      },
+      {
+        "name": "Supernova",
+        "shop": "clothes",
+        "is_ski_rental": false,
+        "distance_m": 189.0,
+        "coords": [
+          45.2972133,
+          6.5845745
+        ]
+      },
+      {
+        "name": null,
+        "shop": "gift",
+        "is_ski_rental": false,
+        "distance_m": 189.8,
+        "coords": [
+          45.2982598,
+          6.5815829
+        ]
+      },
+      {
+        "name": "Intersport",
+        "shop": "sports",
+        "is_ski_rental": false,
+        "distance_m": 210.0,
+        "coords": [
+          45.2967201,
+          6.5839696
+        ]
+      },
+      {
+        "name": "Contrasts",
+        "shop": "optician",
+        "is_ski_rental": false,
+        "distance_m": 230.3,
+        "coords": [
+          45.2982349,
+          6.5812002
+        ]
+      },
+      {
+        "name": "Millet",
+        "shop": "clothes",
+        "is_ski_rental": false,
+        "distance_m": 231.6,
+        "coords": [
+          45.2979199,
+          6.5811461
+        ]
+      },
+      {
+        "name": "The North Face",
+        "shop": "clothes",
+        "is_ski_rental": false,
+        "distance_m": 245.4,
+        "coords": [
+          45.2980173,
+          6.5810245
+        ]
+      },
+      {
+        "name": "L'Or Blanc",
+        "shop": "jewelry",
+        "is_ski_rental": false,
+        "distance_m": 250.9,
+        "coords": [
+          45.2979096,
+          6.5809726
+        ]
+      },
+      {
+        "name": "Carrefour Montagne",
+        "shop": "convenience",
+        "is_ski_rental": false,
+        "distance_m": 255.4,
+        "coords": [
+          45.2964674,
+          6.5841658
+        ]
+      },
+      {
+        "name": "La Boulangerie de Val’Tho",
+        "shop": "bakery",
+        "is_ski_rental": false,
+        "distance_m": 263.9,
+        "coords": [
+          45.2979168,
+          6.580856
+        ]
+      },
+      {
+        "name": "Presse Caron",
+        "shop": "newsagent",
+        "is_ski_rental": false,
+        "distance_m": 269.0,
+        "coords": [
+          45.2980113,
+          6.5808123
+        ]
+      },
+      {
+        "name": "Caisse des Remontées Mécaniques",
+        "shop": "ticket",
+        "is_ski_rental": false,
+        "distance_m": 272.2,
+        "coords": [
+          45.2982319,
+          6.5808164
+        ]
+      },
+      {
+        "name": "Picture",
+        "shop": "clothes",
+        "is_ski_rental": false,
+        "distance_m": 274.4,
+        "coords": [
+          45.2979249,
+          6.5807615
+        ]
+      },
+      {
+        "name": "Ride & Style",
+        "shop": "sports",
+        "is_ski_rental": false,
+        "distance_m": 276.4,
+        "coords": [
+          45.298018,
+          6.5807462
+        ]
+      },
+      {
+        "name": "Spar",
+        "shop": "supermarket",
+        "is_ski_rental": false,
+        "distance_m": 279.4,
+        "coords": [
+          45.2967956,
+          6.5813151
+        ]
+      },
+      {
+        "name": "Chamois Sport",
+        "shop": "ski",
+        "is_ski_rental": true,
+        "distance_m": 287.1,
+        "coords": [
+          45.2966312,
+          6.5814403
+        ]
+      },
+      {
+        "name": "Intersport",
+        "shop": "sports",
+        "is_ski_rental": false,
+        "distance_m": 291.9,
+        "coords": [
+          45.2980268,
+          6.5806071
+        ]
+      },
+      {
+        "name": "Ski Republic",
+        "shop": "sports",
+        "is_ski_rental": true,
+        "distance_m": 292.8,
+        "coords": [
+          45.2968723,
+          6.5853745
+        ]
+      },
+      {
+        "name": "Spirit Souvenirs",
+        "shop": "gift",
+        "is_ski_rental": false,
+        "distance_m": 294.5,
+        "coords": [
+          45.297937,
+          6.5805812
+        ]
+      },
+      {
+        "name": "Caron Ski Shop",
+        "shop": "sports",
+        "is_ski_rental": true,
+        "distance_m": 295.7,
+        "coords": [
+          45.2982652,
+          6.5806107
+        ]
+      },
+      {
+        "name": "Spar",
+        "shop": "supermarket",
+        "is_ski_rental": false,
+        "distance_m": 297.0,
+        "coords": [
+          45.2979828,
+          6.5805588
+        ]
+      },
+      {
+        "name": "Caisse des Remontées Mécaniques",
+        "shop": "ticket",
+        "is_ski_rental": false,
+        "distance_m": 298.3,
+        "coords": [
+          45.2964702,
+          6.5849049
+        ]
+      },
+      {
+        "name": "La ferme de Thorens",
+        "shop": "butcher",
+        "is_ski_rental": false,
+        "distance_m": 302.7,
+        "coords": [
+          45.2980264,
+          6.5805101
+        ]
+      },
+      {
+        "name": "Quiksilver",
+        "shop": "clothes",
+        "is_ski_rental": false,
+        "distance_m": 303.9,
+        "coords": [
+          45.2979573,
+          6.5804966
+        ]
+      },
+      {
+        "name": "Sun Valley",
+        "shop": "clothes",
+        "is_ski_rental": false,
+        "distance_m": 321.7,
+        "coords": [
+          45.2982782,
+          6.5803766
+        ]
+      },
+      {
+        "name": "Skimium",
+        "shop": "sports",
+        "is_ski_rental": true,
+        "distance_m": 332.8,
+        "coords": [
+          45.2979787,
+          6.5802373
+        ]
+      },
+      {
+        "name": "Sport 2000",
+        "shop": "sports",
+        "is_ski_rental": false,
+        "distance_m": 333.0,
+        "coords": [
+          45.2966761,
+          6.5808344
+        ]
+      },
+      {
+        "name": "Carrefour",
+        "shop": "supermarket",
+        "is_ski_rental": false,
+        "distance_m": 341.1,
+        "coords": [
+          45.2981997,
+          6.5801851
+        ]
+      },
+      {
+        "name": "Sport 2000",
+        "shop": "sports",
+        "is_ski_rental": false,
+        "distance_m": 343.3,
+        "coords": [
+          45.2979152,
+          6.5801423
+        ]
+      },
+      {
+        "name": "Alpine Immo",
+        "shop": "estate_agent",
+        "is_ski_rental": false,
+        "distance_m": 352.9,
+        "coords": [
+          45.2982999,
+          6.5800977
+        ]
+      },
+      {
+        "name": "La Belle en Cuisse",
+        "shop": "butcher",
+        "is_ski_rental": false,
+        "distance_m": 354.6,
+        "coords": [
+          45.2981298,
+          6.5800529
+        ]
+      },
+      {
+        "name": "Valtho Sport",
+        "shop": "sports",
+        "is_ski_rental": false,
+        "distance_m": 357.4,
+        "coords": [
+          45.2967316,
+          6.5805137
+        ]
+      },
+      {
+        "name": "Chalet des Neiges Skishop",
+        "shop": "sports",
+        "is_ski_rental": true,
+        "distance_m": 379.6,
+        "coords": [
+          45.2969592,
+          6.5863382
+        ]
+      },
+      {
+        "name": "Ski-Set - Val Thorens",
+        "shop": "sports",
+        "is_ski_rental": true,
+        "distance_m": 396.5,
+        "coords": [
+          45.2983424,
+          6.5797113
+        ]
+      },
+      {
+        "name": "Intersport",
+        "shop": "sports",
+        "is_ski_rental": false,
+        "distance_m": 434.8,
+        "coords": [
+          45.2996238,
+          6.5801407
+        ]
+      },
+      {
+        "name": "Rosael Sports",
+        "shop": "sports",
+        "is_ski_rental": false,
+        "distance_m": 435.2,
+        "coords": [
+          45.2999936,
+          6.5806275
+        ]
+      },
+      {
+        "name": "Sherpa",
+        "shop": "supermarket",
+        "is_ski_rental": false,
+        "distance_m": 456.7,
+        "coords": [
+          45.2996435,
+          6.5799149
+        ]
+      },
+      {
+        "name": "Sucré - Salé - Val Thorens",
+        "shop": "bakery",
+        "is_ski_rental": false,
+        "distance_m": 499.5,
+        "coords": [
+          45.2965897,
+          6.5791702
+        ]
+      }
+    ],
+    "search_radius_m": 500
+  },
+  "hotel": {
+    "name": "Le Val Thorens",
+    "category": "hotel",
+    "stars": "4",
+    "distance_m": 6.6,
+    "coords": [
+      45.297669975018145,
+      6.583122917341388
+    ],
+    "has_spa": false,
+    "has_pool": false,
+    "has_sauna": false,
+    "has_playground": false,
+    "has_childcare": false
+  },
+  "scores": {
+    "lifts": 72.0,
+    "runs": 96.0,
+    "ski_schools": 60,
+    "pass_office": 0,
+    "amenities": 60,
+    "transport": 100,
+    "apres_ski": 100,
+    "overall": 74.2,
+    "rating": "Very Good"
+  }
+}

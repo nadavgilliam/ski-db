@@ -7,7 +7,6 @@ router.post('/', async (req, res) => {
   try {
     console.log('📥 Received search request:', req.body);
 
-    // Validate required fields
     const { origin, dates, adults, budget, preferences } = req.body;
 
     if (!origin || !dates || !adults) {
@@ -17,7 +16,7 @@ router.post('/', async (req, res) => {
       });
     }
 
-    // Build natural language prompt from structured input
+    // Build natural language prompt
     const userPrompt = `
 I want to plan a ski trip with the following preferences:
 
@@ -27,17 +26,18 @@ I want to plan a ski trip with the following preferences:
 - Budget: ${budget ? `€${budget}` : 'Flexible'}
 - Additional preferences: ${preferences || 'Looking for good value and convenience'}
 
-Please search for flights and hotels, then recommend the best complete vacation packages.
+Please search resorts first, then find flights and hotels for the best match.
     `.trim();
 
     // Call AI service
-    const recommendation = await aiService.planSkiTrip(userPrompt);
+    const aiResponse = await aiService.planSkiTrip(userPrompt);
 
-    // Return successful response
+    // Return successful response with structured data
     res.json({
       success: true,
       data: {
-        recommendation: recommendation,
+        recommendations: aiResponse.recommendations || [],
+        summary: aiResponse.summary || 'No summary available',
         searchParams: {
           origin,
           dates,
@@ -56,7 +56,7 @@ Please search for flights and hotels, then recommend the best complete vacation 
   }
 });
 
-// GET /api/search/health - Simple health check
+// GET /api/search/health
 router.get('/health', (req, res) => {
   res.json({
     success: true,
