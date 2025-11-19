@@ -2,6 +2,7 @@ const openai = require('../config/openai');
 const flightService = require('./flightService');
 const hotelService = require('./hotelService');
 const resortService = require('./resortService');
+const osmService = require('./osmService');
 
 class AIService {
   constructor() {
@@ -135,6 +136,31 @@ class AIService {
             required: []
           }
         }
+      },
+      {
+        type: 'function',
+        function: {
+          name: 'analyze_location_amenities',
+          description: 'Analyze detailed amenities and facilities at a ski resort location using OpenStreetMap data. Returns information about lifts, runs, ski schools, ski pass offices, transport, parking, restaurants, bars, nightlife, shops (including ski rental), and family facilities. Use this to get detailed local information about a specific resort location.',
+          parameters: {
+            type: 'object',
+            properties: {
+              latitude: {
+                type: 'number',
+                description: 'Latitude of the ski resort or location to analyze'
+              },
+              longitude: {
+                type: 'number',
+                description: 'Longitude of the ski resort or location to analyze'
+              },
+              locationName: {
+                type: 'string',
+                description: 'Optional name of the location (e.g., resort name) for logging purposes'
+              }
+            },
+            required: ['latitude', 'longitude']
+          }
+        }
       }
     ];
   }
@@ -172,6 +198,18 @@ class AIService {
           rating: r.rating,
           pisteKm: r.pistes.total
         })));
+      } else if (functionName === 'analyze_location_amenities') {
+        console.log('🗺️  Calling OSM service...');
+        result = await osmService.analyzeLocation(args.latitude, args.longitude, args.locationName);
+        console.log(`✅ OSM service returned location analysis`);
+        console.log('Location:', result.hotel_name);
+        console.log('Summary:', {
+          lifts_nearby: result.lifts.total_within_radius,
+          runs_nearby: result.runs.total_within_radius,
+          ski_schools: result.ski_schools.total_within_radius,
+          restaurants: result.food_stats.restaurants_like,
+          nightlife: result.food_stats.nightlife_total
+        });
       } else {
         throw new Error(`Unknown function: ${functionName}`);
       }
@@ -212,26 +250,35 @@ class AIService {
         role: 'system',
         content: `You are an expert ski trip planner with access to real-time data.
 
-IMPORTANT: You have access to THREE tools:
+IMPORTANT: You have access to FOUR tools:
 1. search_resorts - YOUR custom ski resort database with detailed info (ratings, piste km, difficulty, prices, altitude)
 2. search_flights - Real flight search via Amadeus
 3. search_hotels - Real hotel search via Booking.com
+4. analyze_location_amenities - Detailed location analysis via OpenStreetMap (lifts, runs, ski schools, amenities, nightlife, etc.)
 
 WORKFLOW:
 1. ALWAYS start by searching resorts using search_resorts to find the best matches
 2. Then search flights to the nearest airport
 3. Then search hotels near the chosen resort using coordinates from resort data
-4. Analyze all data together
+4. OPTIONALLY use analyze_location_amenities to get detailed local information about amenities, nightlife, and facilities
+5. Analyze all data together
 
 IMPORTANT CONSTRAINTS:
 - Only search ONE destination (pick the best resort from your search)
 - APIs return limited results, use them wisely
 - ALWAYS use the resort database first to make informed decisions
+- Use OSM analysis when user cares about specific amenities, nightlife, or local facilities
 
 Resort Database Info:
 - Contains real data: ratings, piste km (blue/red/black), lift counts, prices, altitude
 - Filter by difficulty level, size, country, price
 - Use this to match user preferences before searching flights/hotels
+
+OSM Location Analysis Info:
+- Provides detailed local amenities: nearby lifts, runs, ski schools, pass offices
+- Shows nightlife (bars, clubs), restaurants, shops (including ski rental)
+- Reveals public transport, parking, and family facilities (pools, spas, playgrounds)
+- Use when users ask about "nightlife", "amenities", "après-ski", "facilities", or "local area"
 
 Airport mapping:
 - Geneva (GVA): French/Swiss Alps (Val Thorens, Chamonix, Verbier)
