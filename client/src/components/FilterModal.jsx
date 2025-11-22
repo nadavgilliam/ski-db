@@ -20,20 +20,21 @@ function FilterModal({ isOpen, onClose, onSave }) {
     departureCity: '',
     dates: { start: '', end: '' },
     adults: 2,
+    skiDays: '',
     budget: '',
-    
+
     // Resort preferences
     countries: { include: [], exclude: [] },
     resortNames: { include: [], exclude: [] },
     minRating: '',
-    
+
     // Piste/Difficulty
     minPisteKm: '',
     maxPisteKm: '',
     minBlueKm: '',
     minRedKm: '',
     minBlackKm: '',
-    
+
     // Infrastructure
     minLifts: '',
     maxPricePerDay: '',
@@ -173,6 +174,20 @@ function GeneralFilters({ filters, updateFilter }) {
         />
       </div>
 
+      {/* Number of Ski Days */}
+      <div style={styles.filterGroup}>
+        <label style={styles.label}>Number of Full Ski Days</label>
+        <input
+          type="number"
+          min="1"
+          placeholder="e.g., 5 - leave empty if flexible"
+          value={filters.skiDays}
+          onChange={(e) => updateFilter('skiDays', e.target.value)}
+          style={styles.input}
+        />
+        <p style={styles.hint}>How many full days you plan to ski (affects ski pass pricing)</p>
+      </div>
+
       {/* Budget */}
       <div style={styles.filterGroup}>
         <label style={styles.label}>Total Trip Budget (EUR)</label>
@@ -193,6 +208,8 @@ function GeneralFilters({ filters, updateFilter }) {
 function ResortFilters({ filters, updateFilter }) {
   const [includeCountriesText, setIncludeCountriesText] = React.useState('');
   const [excludeCountriesText, setExcludeCountriesText] = React.useState('');
+  const [includeResortsText, setIncludeResortsText] = React.useState('');
+  const [excludeResortsText, setExcludeResortsText] = React.useState('');
 
   const handleIncludeCountriesChange = (text) => {
     setIncludeCountriesText(text);
@@ -204,6 +221,18 @@ function ResortFilters({ filters, updateFilter }) {
     setExcludeCountriesText(text);
     const countries = text.split(',').map(c => c.trim()).filter(c => c.length > 0);
     updateFilter('countries', { ...filters.countries, exclude: countries });
+  };
+
+  const handleIncludeResortsChange = (text) => {
+    setIncludeResortsText(text);
+    const resorts = text.split(',').map(r => r.trim()).filter(r => r.length > 0);
+    updateFilter('resortNames', { ...filters.resortNames, include: resorts });
+  };
+
+  const handleExcludeResortsChange = (text) => {
+    setExcludeResortsText(text);
+    const resorts = text.split(',').map(r => r.trim()).filter(r => r.length > 0);
+    updateFilter('resortNames', { ...filters.resortNames, exclude: resorts });
   };
 
   return (
@@ -232,6 +261,30 @@ function ResortFilters({ filters, updateFilter }) {
           style={styles.input}
         />
         <p style={styles.hint}>Comma-separated list - leave empty to exclude none</p>
+      </div>
+
+      <div style={styles.filterGroup}>
+        <label style={styles.label}>Include Specific Resorts (only consider these)</label>
+        <input
+          type="text"
+          placeholder="e.g., Val Thorens, Chamonix, Zermatt"
+          value={includeResortsText}
+          onChange={(e) => handleIncludeResortsChange(e.target.value)}
+          style={styles.input}
+        />
+        <p style={styles.hint}>Comma-separated list of resort names - leave empty to search all resorts</p>
+      </div>
+
+      <div style={styles.filterGroup}>
+        <label style={styles.label}>Exclude Specific Resorts (avoid these)</label>
+        <input
+          type="text"
+          placeholder="e.g., Courchevel, St. Moritz"
+          value={excludeResortsText}
+          onChange={(e) => handleExcludeResortsChange(e.target.value)}
+          style={styles.input}
+        />
+        <p style={styles.hint}>Comma-separated list of resort names to exclude</p>
       </div>
 
       <div style={styles.filterGroup}>

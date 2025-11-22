@@ -60,6 +60,7 @@ function SearchPage() {
           departure: manualFilters.dates.start,
           return: manualFilters.dates.end
         } : undefined,  // Optional - only send if provided
+        skiDays: manualFilters?.skiDays,
         budget: manualFilters?.budget,
         preferences: searchQuery,
         // Resort filters

@@ -27,6 +27,7 @@ export async function searchSkiTrips(searchData) {
         origin: searchData.origin || 'Tel Aviv',
         dates: searchData.dates,
         adults: searchData.adults,
+        skiDays: searchData.skiDays,
         budget: searchData.budget,
         preferences: searchData.query || searchData.preferences,
         // Resort filters

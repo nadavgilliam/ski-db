@@ -11,6 +11,7 @@ router.post('/', async (req, res) => {
       origin = 'Tel Aviv',  // Mandatory with default
       adults = 2,           // Mandatory with default
       dates,                // Optional - no default
+      skiDays,              // Optional - number of full ski days
       budget,
       preferences,
       // Resort filters
@@ -36,6 +37,7 @@ BASIC TRIP DETAILS:
 - Departure City (for flights): ${origin}
 - Travel Dates: ${dates?.departure && dates?.return ? `Departure on ${dates.departure}, Return on ${dates.return}` : 'Not specified (flexible dates)'}
 - Number of Adult Travelers: ${adults}
+- Number of Full Ski Days Expected: ${skiDays ? `${skiDays} full days of skiing` : 'Not specified (use trip duration to estimate)'}
 - Total Trip Budget: ${budget ? `€${budget}` : 'Flexible (no specific budget constraint)'}
 ${preferences ? `- Additional User Preferences: ${preferences}` : ''}
 
@@ -129,6 +131,7 @@ Please search for resorts that match ALL of the above requirements. Then find su
           origin,
           dates,
           adults,
+          skiDays,
           budget,
           minRating,
           minPisteKm,

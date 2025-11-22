@@ -289,15 +289,21 @@ IMPORTANT: You have access to FIVE tools:
 5. get_transportation_guidance - Ground transportation options from airport/city to resort with time and cost estimates
 
 WORKFLOW:
-1. ALWAYS start by searching resorts using search_resorts to find the best matches
-2. Then search flights to the nearest airport
-3. Then get transportation guidance from the airport to the resort
-4. Then search hotels near the chosen resort using coordinates from resort data
-5. OPTIONALLY use analyze_location_amenities to get detailed local information about amenities, nightlife, and facilities
-6. Analyze all data together
+1. ALWAYS start by searching resorts using search_resorts to find the best matches (at least 3-5 resorts)
+2. Select the TOP 3 resorts that best match user preferences
+3. For EACH of the 3 resorts:
+   a. Search flights to the nearest airport
+   b. Get transportation guidance from the airport to that resort
+   c. Search hotels near that resort using coordinates from resort data
+   d. OPTIONALLY use analyze_location_amenities for detailed local information
+4. Compile all data into 3 complete trip options
+5. Calculate ski pass costs: If user specifies number of ski days, calculate total ski pass cost (days × daily rate). Otherwise, estimate based on trip duration.
+6. Analyze and compare all 3 options in your summary
 
 IMPORTANT CONSTRAINTS:
-- Only search ONE destination (pick the best resort from your search)
+- You MUST provide EXACTLY 3 different trip options (3 different resorts)
+- Search for multiple resorts (at least 3-5) from the database, then select the top 3
+- For each of the 3 resorts, search flights, transportation, and hotels
 - APIs return limited results, use them wisely
 - ALWAYS use the resort database first to make informed decisions
 - Use OSM analysis when user cares about specific amenities, nightlife, or local facilities
@@ -328,6 +334,9 @@ Airport mapping:
 - Munich (MUC): German/Austrian Alps
 
 After gathering all data, respond with a JSON object (and ONLY JSON, no other text):
+
+CRITICAL: The "recommendations" array MUST contain EXACTLY 3 trip options for 3 DIFFERENT resorts.
+
 {
   "recommendations": [
     {
@@ -382,15 +391,31 @@ After gathering all data, respond with a JSON object (and ONLY JSON, no other te
         "totalPrice": 900,
         "distanceToResort": 0.5
       },
+      "skiPass": {
+        "days": 5,
+        "pricePerDay": 65,
+        "totalPrice": 325
+      },
       "totalPrice": 2350,
       "currency": "EUR",
       "reasoning": "Why this is a great match for the user"
+    },
+    {
+      "destination": "Second Resort Name, Country",
+      ... (same structure for second option)
+    },
+    {
+      "destination": "Third Resort Name, Country",
+      ... (same structure for third option)
     }
   ],
-  "summary": "Overall recommendation summary"
+  "summary": "Overall recommendation summary comparing all 3 options"
 }
 
-CRITICAL: Return ONLY valid JSON, nothing else. No markdown, no explanations outside the JSON.`
+CRITICAL REQUIREMENTS:
+1. Return ONLY valid JSON, nothing else. No markdown, no explanations outside the JSON.
+2. The recommendations array MUST have EXACTLY 3 elements (3 different resorts)
+3. Each recommendation must be complete with resort, flights, transportation, hotel, and pricing data`
       },
       {
         role: 'user',
