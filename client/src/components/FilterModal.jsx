@@ -30,6 +30,8 @@ function FilterModal({ isOpen, onClose, onSave }) {
     // Piste/Difficulty
     minPisteKm: '',
     maxPisteKm: '',
+    minAltitude: '',
+    maxAltitude: '',
     minBlueKm: '',
     minRedKm: '',
     minBlackKm: '',
@@ -47,7 +49,7 @@ function FilterModal({ isOpen, onClose, onSave }) {
   const categories = [
     { id: 'general', icon: '⚙️', label: 'General' },
     { id: 'resort', icon: '🗺️', label: 'Destination Preferences' },
-    { id: 'difficulty', icon: '⛷️', label: 'Ski Resort Requirements' },
+    { id: 'difficulty', icon: '⛷️', label: 'Ski Resort' },
     { id: 'transfer', icon: '🚗', label: 'Transfer' },
   ]
 
@@ -328,6 +330,31 @@ function DifficultyFilters({ filters, updateFilter }) {
         </div>
       </div>
 
+      <div style={styles.filterRow}>
+        <div style={styles.filterGroup}>
+          <label style={styles.label}>Min Altitude (meters)</label>
+          <input
+            type="number"
+            placeholder="e.g., 1500 - leave empty for no minimum"
+            value={filters.minAltitude}
+            onChange={(e) => updateFilter('minAltitude', e.target.value)}
+            style={styles.input}
+          />
+          <p style={styles.hint}>Minimum altitude of the ski area</p>
+        </div>
+        <div style={styles.filterGroup}>
+          <label style={styles.label}>Max Altitude (meters)</label>
+          <input
+            type="number"
+            placeholder="e.g., 3500 - leave empty for no maximum"
+            value={filters.maxAltitude}
+            onChange={(e) => updateFilter('maxAltitude', e.target.value)}
+            style={styles.input}
+          />
+          <p style={styles.hint}>Maximum altitude of the ski area</p>
+        </div>
+      </div>
+
       <div style={styles.filterGroup}>
         <label style={styles.label}>Min Blue Slopes - Beginner (km)</label>
         <input
@@ -465,8 +492,8 @@ const styles = {
     backgroundColor: 'white',
     borderRadius: '12px',
     width: '100%',
-    maxWidth: '1200px',
-    maxHeight: '90vh',
+    maxWidth: '1400px',
+    height: '85vh',
     display: 'flex',
     flexDirection: 'column',
     boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
@@ -535,6 +562,7 @@ const styles = {
     marginBottom: '0.5rem',
     textAlign: 'left',
     transition: 'all 0.2s',
+    whiteSpace: 'nowrap',
   },
   categoryButtonActive: {
     backgroundColor: 'var(--ice-blue)',
@@ -546,11 +574,11 @@ const styles = {
   },
   panel: {
     flex: 1,
-    padding: '2rem',
+    padding: '2rem 3rem',
     overflowY: 'auto',
   },
   filterSection: {
-    maxWidth: '700px',
+    maxWidth: '100%',
   },
   sectionTitle: {
     fontSize: '1.25rem',

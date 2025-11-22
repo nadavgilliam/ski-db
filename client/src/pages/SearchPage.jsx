@@ -63,6 +63,8 @@ function SearchPage() {
         // Piste/Difficulty filters
         minPisteKm: manualFilters?.minPisteKm,
         maxPisteKm: manualFilters?.maxPisteKm,
+        minAltitude: manualFilters?.minAltitude,
+        maxAltitude: manualFilters?.maxAltitude,
         minBlueKm: manualFilters?.minBlueKm,
         minRedKm: manualFilters?.minRedKm,
         minBlackKm: manualFilters?.minBlackKm,

@@ -21,6 +21,8 @@ router.post('/', async (req, res) => {
       // Piste/Difficulty filters
       minPisteKm,
       maxPisteKm,
+      minAltitude,
+      maxAltitude,
       minBlueKm,
       minRedKm,
       minBlackKm,
@@ -64,6 +66,19 @@ RESORT QUALITY REQUIREMENTS:`;
       userPrompt += `\n- Maximum Total Piste Length: ${maxPisteKm} km or less`;
     } else {
       userPrompt += `\n- Maximum Total Piste Length: No maximum limit`;
+    }
+
+    // Altitude filters
+    userPrompt += `\n\nALTITUDE REQUIREMENTS:`;
+    if (minAltitude) {
+      userPrompt += `\n- Minimum Altitude: ${minAltitude} meters or higher`;
+    } else {
+      userPrompt += `\n- Minimum Altitude: No minimum requirement`;
+    }
+    if (maxAltitude) {
+      userPrompt += `\n- Maximum Altitude: ${maxAltitude} meters or lower`;
+    } else {
+      userPrompt += `\n- Maximum Altitude: No maximum limit`;
     }
 
     // Difficulty-specific piste requirements
@@ -160,6 +175,8 @@ Please search for resorts that match ALL of the above requirements. Then find su
           minRating,
           minPisteKm,
           maxPisteKm,
+          minAltitude,
+          maxAltitude,
           minBlueKm,
           minRedKm,
           minBlackKm,
