@@ -45,6 +45,7 @@ function FilterModal({ isOpen, onClose, onSave }) {
     transferTypes: [],
 
     // Flights
+    maxFlightDuration: '',
     nonStopOnly: false,
   })
 
@@ -430,6 +431,20 @@ function FlightFilters({ filters, updateFilter }) {
   return (
     <div style={styles.filterSection}>
       <h3 style={styles.sectionTitle}>Flight Preferences</h3>
+
+      <div style={styles.filterGroup}>
+        <label style={styles.label}>Maximum Flight Duration (hours)</label>
+        <input
+          type="number"
+          min="1"
+          step="0.5"
+          placeholder="e.g., 8 - leave empty for no limit"
+          value={filters.maxFlightDuration}
+          onChange={(e) => updateFilter('maxFlightDuration', e.target.value)}
+          style={styles.input}
+        />
+        <p style={styles.hint}>Maximum total flight duration in hours (including layovers if applicable)</p>
+      </div>
 
       <div style={styles.filterGroup}>
         <label style={styles.checkboxLabel}>

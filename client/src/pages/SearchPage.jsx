@@ -71,6 +71,7 @@ function SearchPage() {
         minLifts: manualFilters?.minLifts,
         maxPricePerDay: manualFilters?.maxPricePerDay,
         // Flight filters
+        maxFlightDuration: manualFilters?.maxFlightDuration,
         nonStopOnly: manualFilters?.nonStopOnly,
         // Transfer filters
         maxTransferTime: manualFilters?.maxTransferTime,

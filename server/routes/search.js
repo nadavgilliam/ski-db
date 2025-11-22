@@ -30,6 +30,7 @@ router.post('/', async (req, res) => {
       minLifts,
       maxPricePerDay,
       // Flight filters
+      maxFlightDuration,
       nonStopOnly,
       // Transfer filters
       maxTransferTime,
@@ -134,6 +135,14 @@ RESORT QUALITY REQUIREMENTS:`;
 
     // Flight filters
     userPrompt += `\n\nFLIGHT PREFERENCES:`;
+    if (maxFlightDuration) {
+      userPrompt += `\n- Maximum Flight Duration: ${maxFlightDuration} hours or less (total travel time including layovers)`;
+      userPrompt += `\n  IMPORTANT: Only show flights where the total duration is ${maxFlightDuration} hours or less. Check both outbound and return flights.`;
+      // TODO: Add maxFlightDuration parameter to the search_flights tool definition in aiService.js
+      // so the LLM can pass it directly to the Amadeus API or filter results programmatically
+    } else {
+      userPrompt += `\n- Maximum Flight Duration: No time limit (any flight duration is acceptable)`;
+    }
     if (nonStopOnly) {
       userPrompt += `\n- Non-stop Flights Only: YES - Only show direct flights with no layovers`;
       userPrompt += `\n  IMPORTANT: When searching for flights, you MUST set the nonStop parameter to true. Do not show any flights with stops.`;
