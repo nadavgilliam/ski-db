@@ -36,6 +36,10 @@ class AIService {
               adults: {
                 type: 'number',
                 description: 'Number of adult passengers'
+              },
+              nonStop: {
+                type: 'boolean',
+                description: 'If true, only return direct flights with no stops/layovers. Default is false (flights with layovers are acceptable).'
               }
             },
             required: ['origin', 'destination', 'departureDate', 'returnDate', 'adults']

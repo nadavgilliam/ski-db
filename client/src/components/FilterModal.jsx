@@ -43,6 +43,9 @@ function FilterModal({ isOpen, onClose, onSave }) {
     // Transfer
     maxTransferTime: '',
     transferTypes: [],
+
+    // Flights
+    nonStopOnly: false,
   })
 
   // Filter categories for sidebar
@@ -50,6 +53,7 @@ function FilterModal({ isOpen, onClose, onSave }) {
     { id: 'general', icon: '⚙️', label: 'General' },
     { id: 'resort', icon: '🗺️', label: 'Destination Preferences' },
     { id: 'difficulty', icon: '⛷️', label: 'Ski Resort' },
+    { id: 'flights', icon: '✈️', label: 'Flights' },
     { id: 'transfer', icon: '🚗', label: 'Transfer' },
   ]
 
@@ -106,6 +110,9 @@ function FilterModal({ isOpen, onClose, onSave }) {
             )}
             {selectedCategory === 'difficulty' && (
               <DifficultyFilters filters={filters} updateFilter={updateFilter} />
+            )}
+            {selectedCategory === 'flights' && (
+              <FlightFilters filters={filters} updateFilter={updateFilter} />
             )}
             {selectedCategory === 'transfer' && (
               <TransferFilters filters={filters} updateFilter={updateFilter} />
@@ -413,6 +420,28 @@ function DifficultyFilters({ filters, updateFilter }) {
           style={styles.input}
         />
         <p style={styles.hint}>Price per adult per day for ski pass access</p>
+      </div>
+    </div>
+  )
+}
+
+// Flight Filters Panel
+function FlightFilters({ filters, updateFilter }) {
+  return (
+    <div style={styles.filterSection}>
+      <h3 style={styles.sectionTitle}>Flight Preferences</h3>
+
+      <div style={styles.filterGroup}>
+        <label style={styles.checkboxLabel}>
+          <input
+            type="checkbox"
+            checked={filters.nonStopOnly}
+            onChange={(e) => updateFilter('nonStopOnly', e.target.checked)}
+            style={styles.checkbox}
+          />
+          <span>Non-stop flights only (no layovers)</span>
+        </label>
+        <p style={styles.hint}>Only show direct flights with no stops between origin and destination</p>
       </div>
     </div>
   )

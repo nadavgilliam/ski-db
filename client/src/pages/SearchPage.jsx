@@ -70,6 +70,8 @@ function SearchPage() {
         minBlackKm: manualFilters?.minBlackKm,
         minLifts: manualFilters?.minLifts,
         maxPricePerDay: manualFilters?.maxPricePerDay,
+        // Flight filters
+        nonStopOnly: manualFilters?.nonStopOnly,
         // Transfer filters
         maxTransferTime: manualFilters?.maxTransferTime,
         transferTypes: manualFilters?.transferTypes

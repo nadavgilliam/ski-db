@@ -1,16 +1,19 @@
 const amadeus = require('../config/amadeus');
 
 class FlightService {
-  async searchFlights({ origin, destination, departureDate, returnDate, adults }) {
+  async searchFlights({ origin, destination, departureDate, returnDate, adults, nonStop }) {
     try {
-      const response = await amadeus.shopping.flightOffersSearch.get({
+      const searchParams = {
         originLocationCode: origin,
         destinationLocationCode: destination,
         departureDate: departureDate,
         returnDate: returnDate,
         adults: adults.toString(),
-        max: '3'
-      });
+        max: '3',
+        ...(nonStop === true && { nonStop: 'true' })
+      };
+
+      const response = await amadeus.shopping.flightOffersSearch.get(searchParams);
 
       return this.formatFlightResults(response.data);
     } catch (error) {

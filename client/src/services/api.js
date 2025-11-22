@@ -42,7 +42,9 @@ export async function searchSkiTrips(searchData) {
         minBlackKm: searchData.minBlackKm,
         // Infrastructure filters
         minLifts: searchData.minLifts,
-        maxPricePerDay: searchData.maxPricePerDay
+        maxPricePerDay: searchData.maxPricePerDay,
+        // Flight filters
+        nonStopOnly: searchData.nonStopOnly
       })
     })
 

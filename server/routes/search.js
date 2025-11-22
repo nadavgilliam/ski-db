@@ -29,6 +29,8 @@ router.post('/', async (req, res) => {
       // Infrastructure filters
       minLifts,
       maxPricePerDay,
+      // Flight filters
+      nonStopOnly,
       // Transfer filters
       maxTransferTime,
       transferTypes
@@ -128,6 +130,15 @@ RESORT QUALITY REQUIREMENTS:`;
     }
     if (resortNames?.exclude?.length > 0) {
       userPrompt += `\n- Specific Resorts to Exclude: ${resortNames.exclude.join(', ')}`;
+    }
+
+    // Flight filters
+    userPrompt += `\n\nFLIGHT PREFERENCES:`;
+    if (nonStopOnly) {
+      userPrompt += `\n- Non-stop Flights Only: YES - Only show direct flights with no layovers`;
+      userPrompt += `\n  IMPORTANT: When searching for flights, you MUST set the nonStop parameter to true. Do not show any flights with stops.`;
+    } else {
+      userPrompt += `\n- Non-stop Flights Only: No requirement (flights with layovers are acceptable)`;
     }
 
     // Transfer filters
