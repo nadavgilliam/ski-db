@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { X, Search } from 'lucide-react'
 
 /**
  * FilterModal Component
@@ -38,14 +37,18 @@ function FilterModal({ isOpen, onClose, onSave }) {
     // Infrastructure
     minLifts: '',
     maxPricePerDay: '',
+
+    // Transfer
+    maxTransferTime: '',
+    transferTypes: [],
   })
 
   // Filter categories for sidebar
   const categories = [
     { id: 'general', icon: '⚙️', label: 'General' },
-    { id: 'resort', icon: '🏔️', label: 'Resort Preferences' },
-    { id: 'difficulty', icon: '⛷️', label: 'Piste & Difficulty' },
-    { id: 'infrastructure', icon: '🚡', label: 'Infrastructure' },
+    { id: 'resort', icon: '🗺️', label: 'Destination Preferences' },
+    { id: 'difficulty', icon: '⛷️', label: 'Ski Resort Requirements' },
+    { id: 'transfer', icon: '🚗', label: 'Transfer' },
   ]
 
   // Update a filter value
@@ -76,15 +79,6 @@ function FilterModal({ isOpen, onClose, onSave }) {
         <div style={styles.content}>
           {/* Left Sidebar */}
           <div style={styles.sidebar}>
-            <div style={styles.searchBox}>
-              <Search size={16} color="var(--text-secondary)" />
-              <input
-                type="text"
-                placeholder="Search filters"
-                style={styles.searchInput}
-              />
-            </div>
-
             {categories.map(cat => (
               <button
                 key={cat.id}
@@ -111,8 +105,8 @@ function FilterModal({ isOpen, onClose, onSave }) {
             {selectedCategory === 'difficulty' && (
               <DifficultyFilters filters={filters} updateFilter={updateFilter} />
             )}
-            {selectedCategory === 'infrastructure' && (
-              <InfrastructureFilters filters={filters} updateFilter={updateFilter} />
+            {selectedCategory === 'transfer' && (
+              <TransferFilters filters={filters} updateFilter={updateFilter} />
             )}
           </div>
         </div>
@@ -237,30 +231,30 @@ function ResortFilters({ filters, updateFilter }) {
 
   return (
     <div style={styles.filterSection}>
-      <h3 style={styles.sectionTitle}>Resort Preferences</h3>
+      <h3 style={styles.sectionTitle}>Destination Preferences</h3>
 
       <div style={styles.filterGroup}>
-        <label style={styles.label}>Include Countries (only search in these)</label>
+        <label style={styles.label}>Include Countries or Regions (only search in these)</label>
         <input
           type="text"
-          placeholder="e.g., France, Switzerland, Austria"
+          placeholder="e.g., France, Alps, Rocky Mountains, Japan, Scandinavia"
           value={includeCountriesText}
           onChange={(e) => handleIncludeCountriesChange(e.target.value)}
           style={styles.input}
         />
-        <p style={styles.hint}>Comma-separated list - leave empty for all countries</p>
+        <p style={styles.hint}>Comma-separated list of countries or regions - leave empty for all locations</p>
       </div>
 
       <div style={styles.filterGroup}>
-        <label style={styles.label}>Exclude Countries (avoid these)</label>
+        <label style={styles.label}>Exclude Countries or Regions (avoid these)</label>
         <input
           type="text"
-          placeholder="e.g., Italy"
+          placeholder="e.g., Italy, USA, Eastern Europe"
           value={excludeCountriesText}
           onChange={(e) => handleExcludeCountriesChange(e.target.value)}
           style={styles.input}
         />
-        <p style={styles.hint}>Comma-separated list - leave empty to exclude none</p>
+        <p style={styles.hint}>Comma-separated list of countries or regions to exclude - leave empty to exclude none</p>
       </div>
 
       <div style={styles.filterGroup}>
@@ -287,6 +281,16 @@ function ResortFilters({ filters, updateFilter }) {
         <p style={styles.hint}>Comma-separated list of resort names to exclude</p>
       </div>
 
+    </div>
+  )
+}
+
+// Difficulty Filters Panel
+function DifficultyFilters({ filters, updateFilter }) {
+  return (
+    <div style={styles.filterSection}>
+      <h3 style={styles.sectionTitle}>Ski Resort Requirements</h3>
+
       <div style={styles.filterGroup}>
         <label style={styles.label}>Minimum Resort Rating (0-5 stars)</label>
         <input
@@ -300,15 +304,6 @@ function ResortFilters({ filters, updateFilter }) {
           style={styles.input}
         />
       </div>
-    </div>
-  )
-}
-
-// Difficulty Filters Panel
-function DifficultyFilters({ filters, updateFilter }) {
-  return (
-    <div style={styles.filterSection}>
-      <h3 style={styles.sectionTitle}>Piste & Difficulty</h3>
 
       <div style={styles.filterRow}>
         <div style={styles.filterGroup}>
@@ -368,15 +363,6 @@ function DifficultyFilters({ filters, updateFilter }) {
         />
         <p style={styles.hint}>Leave empty if no requirement for black slopes</p>
       </div>
-    </div>
-  )
-}
-
-// Infrastructure Filters Panel
-function InfrastructureFilters({ filters, updateFilter }) {
-  return (
-    <div style={styles.filterSection}>
-      <h3 style={styles.sectionTitle}>Infrastructure & Pricing</h3>
 
       <div style={styles.filterGroup}>
         <label style={styles.label}>Minimum Number of Ski Lifts</label>
@@ -404,6 +390,61 @@ function InfrastructureFilters({ filters, updateFilter }) {
     </div>
   )
 }
+
+// Transfer Filters Panel
+function TransferFilters({ filters, updateFilter }) {
+  const transferOptions = [
+    { value: 'car_rental', label: 'Car Rental' },
+    { value: 'train_and_bus', label: 'Train and Bus' },
+    { value: 'shuttle_bus', label: 'Shuttle Bus' },
+    { value: 'public_bus', label: 'Public Bus' },
+  ];
+
+  const handleTransferTypeToggle = (value) => {
+    const currentTypes = filters.transferTypes || [];
+    const newTypes = currentTypes.includes(value)
+      ? currentTypes.filter(t => t !== value)
+      : [...currentTypes, value];
+    updateFilter('transferTypes', newTypes);
+  };
+
+  return (
+    <div style={styles.filterSection}>
+      <h3 style={styles.sectionTitle}>Transfer Preferences</h3>
+
+      <div style={styles.filterGroup}>
+        <label style={styles.label}>Maximum Transfer Time (minutes)</label>
+        <input
+          type="number"
+          placeholder="e.g., 180 (3 hours) - leave empty for no limit"
+          value={filters.maxTransferTime}
+          onChange={(e) => updateFilter('maxTransferTime', e.target.value)}
+          style={styles.input}
+        />
+        <p style={styles.hint}>Maximum time from airport to resort - leave empty if flexible</p>
+      </div>
+
+      <div style={styles.filterGroup}>
+        <label style={styles.label}>Preferred Transfer Types</label>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.5rem' }}>
+          {transferOptions.map(option => (
+            <label key={option.value} style={styles.checkboxLabel}>
+              <input
+                type="checkbox"
+                checked={filters.transferTypes.includes(option.value)}
+                onChange={() => handleTransferTypeToggle(option.value)}
+                style={styles.checkbox}
+              />
+              <span>{option.label}</span>
+            </label>
+          ))}
+        </div>
+        <p style={styles.hint}>Select one or more preferred transfer options - leave empty for all types</p>
+      </div>
+    </div>
+  )
+}
+
 
 // Styles
 const styles = {
@@ -541,11 +582,25 @@ const styles = {
     fontSize: '0.95rem',
     outline: 'none',
     transition: 'border-color 0.2s',
+    backgroundColor: '#f5f5f5',
   },
   hint: {
     fontSize: '0.85rem',
     color: 'var(--text-secondary)',
     marginTop: '0.25rem',
+  },
+  checkboxLabel: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    fontSize: '0.95rem',
+    color: 'var(--text-primary)',
+    cursor: 'pointer',
+  },
+  checkbox: {
+    width: '18px',
+    height: '18px',
+    cursor: 'pointer',
   },
 }
 

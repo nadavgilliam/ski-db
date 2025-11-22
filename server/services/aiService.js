@@ -83,19 +83,19 @@ class AIService {
         type: 'function',
         function: {
           name: 'search_resorts',
-          description: 'Search ski resorts from database based on various criteria like country, rating, piste difficulty, price, etc. This is YOUR custom database with detailed resort information.',
+          description: 'Search ski resorts from database based on various criteria like country, region, rating, piste difficulty, price, etc. This is YOUR custom database with detailed resort information.',
           parameters: {
             type: 'object',
             properties: {
               includeCountries: {
                 type: 'array',
                 items: { type: 'string' },
-                description: 'Countries to include (e.g., ["France", "Switzerland"])'
+                description: 'Countries or regions to include. Can be specific countries (e.g., ["France", "Switzerland"]) OR broader regions (e.g., ["Alps", "French Alps", "Europe", "Dolomites"]). You should interpret regional terms and convert them to appropriate country filters.'
               },
               excludeCountries: {
                 type: 'array',
                 items: { type: 'string' },
-                description: 'Countries to exclude'
+                description: 'Countries or regions to exclude. Can be specific countries OR broader regions. You should interpret regional terms and convert them to appropriate country filters.'
               },
               minRating: {
                 type: 'number',
@@ -314,6 +314,11 @@ Resort Database Info:
 - Contains real data: ratings, piste km (blue/red/black), lift counts, prices, altitude
 - Filter by difficulty level, size, country, price
 - Use this to match user preferences before searching flights/hotels
+- IMPORTANT: When users specify regions, interpret them intelligently by converting to appropriate country filters:
+  * Examples: "Alps" → France, Switzerland, Austria, Italy; "French Alps" → France; "Dolomites" → Italy
+  * "Rocky Mountains" → USA, Canada; "Japan" → Japan; "Scandinavia" → Norway, Sweden, Finland
+  * Apply your geographic knowledge to convert ANY regional term (anywhere in the world) to the appropriate countries
+  * This applies to both inclusions and exclusions
 
 OSM Location Analysis Info:
 - Provides detailed local amenities: nearby lifts, runs, ski schools, pass offices
@@ -325,7 +330,12 @@ Transportation Guidance Info:
 - Provides typical ground transportation options (shuttle bus, car rental, train, public bus, etc.)
 - Includes rough time estimates and costs in EUR
 - Use this for ALL trip planning to help users understand resort accessibility
-- If user mentions transport preferences, use this to inform your resort recommendations
+- CRITICAL: If user specifies transfer constraints (max transfer time or preferred transfer types):
+  * You MUST call get_transportation_guidance for EACH resort you're considering
+  * Filter/rank resorts based on whether they meet the transfer requirements
+  * For max transfer time: At least one transportation option must be within the time limit
+  * For preferred transfer types: At least one of the user's preferred types must be available
+  * Only recommend resorts that meet BOTH transfer constraints (if specified)
 
 Airport mapping:
 - Geneva (GVA): French/Swiss Alps (Val Thorens, Chamonix, Verbier)

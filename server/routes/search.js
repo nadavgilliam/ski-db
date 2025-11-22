@@ -26,7 +26,10 @@ router.post('/', async (req, res) => {
       minBlackKm,
       // Infrastructure filters
       minLifts,
-      maxPricePerDay
+      maxPricePerDay,
+      // Transfer filters
+      maxTransferTime,
+      transferTypes
     } = req.body;
 
     // Build comprehensive natural language prompt with clear, descriptive filter names
@@ -64,7 +67,7 @@ RESORT QUALITY REQUIREMENTS:`;
     }
 
     // Difficulty-specific piste requirements
-    userPrompt += `\n\nSLOPE DIFFICULTY REQUIREMENTS:`;
+    userPrompt += `\n\nSKI RESORT REQUIREMENTS:`;
     if (minBlueKm) {
       userPrompt += `\n- Minimum Blue Slopes (beginner-friendly): ${minBlueKm} km or more`;
     } else {
@@ -80,9 +83,6 @@ RESORT QUALITY REQUIREMENTS:`;
     } else {
       userPrompt += `\n- Minimum Black Slopes: No specific requirement`;
     }
-
-    // Infrastructure filters
-    userPrompt += `\n\nINFRASTRUCTURE & PRICING REQUIREMENTS:`;
     if (minLifts) {
       userPrompt += `\n- Minimum Number of Ski Lifts: ${minLifts} lifts or more`;
     } else {
@@ -97,20 +97,44 @@ RESORT QUALITY REQUIREMENTS:`;
     // Geographic filters
     userPrompt += `\n\nGEOGRAPHIC PREFERENCES:`;
     if (countries?.include?.length > 0) {
-      userPrompt += `\n- Countries to Include (search only in these): ${countries.include.join(', ')}`;
+      userPrompt += `\n- Countries or Regions to Include (search only in these): ${countries.include.join(', ')}`;
+      userPrompt += `\n  Note: This can include specific countries (e.g., France, Austria) OR broader regions (e.g., Alps, French Alps, Europe, Dolomites). Interpret regional terms flexibly.`;
     } else {
-      userPrompt += `\n- Countries to Include: All countries are acceptable`;
+      userPrompt += `\n- Countries or Regions to Include: All locations are acceptable`;
     }
     if (countries?.exclude?.length > 0) {
-      userPrompt += `\n- Countries to Exclude (do not search in these): ${countries.exclude.join(', ')}`;
+      userPrompt += `\n- Countries or Regions to Exclude (do not search in these): ${countries.exclude.join(', ')}`;
+      userPrompt += `\n  Note: This can include specific countries OR broader regions. Interpret regional terms flexibly.`;
     } else {
-      userPrompt += `\n- Countries to Exclude: None`;
+      userPrompt += `\n- Countries or Regions to Exclude: None`;
     }
     if (resortNames?.include?.length > 0) {
       userPrompt += `\n- Specific Resorts to Include: ${resortNames.include.join(', ')}`;
     }
     if (resortNames?.exclude?.length > 0) {
       userPrompt += `\n- Specific Resorts to Exclude: ${resortNames.exclude.join(', ')}`;
+    }
+
+    // Transfer filters
+    userPrompt += `\n\nTRANSFER PREFERENCES:`;
+    if (maxTransferTime) {
+      userPrompt += `\n- Maximum Transfer Time from Airport to Resort: ${maxTransferTime} minutes or less`;
+      userPrompt += `\n  IMPORTANT: Use the get_transportation_guidance tool to check transfer times. At least one transportation option must meet this time requirement.`;
+    } else {
+      userPrompt += `\n- Maximum Transfer Time from Airport: No time limit (flexible)`;
+    }
+    if (transferTypes?.length > 0) {
+      const typeLabels = {
+        'car_rental': 'Car Rental',
+        'train_and_bus': 'Train and Bus',
+        'shuttle_bus': 'Shuttle Bus',
+        'public_bus': 'Public Bus'
+      };
+      const selectedTypes = transferTypes.map(t => typeLabels[t] || t).join(', ');
+      userPrompt += `\n- Preferred Transfer Types: ${selectedTypes}`;
+      userPrompt += `\n  IMPORTANT: Use the get_transportation_guidance tool. At least one of these transportation types should be available for recommended resorts.`;
+    } else {
+      userPrompt += `\n- Preferred Transfer Types: All transfer types are acceptable`;
     }
 
     userPrompt += `\n\nINSTRUCTIONS:

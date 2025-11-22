@@ -6,12 +6,11 @@ import { searchSkiTrips } from '../services/api'
 
 /**
  * SearchPage Component
- * 
+ *
  * Main search interface where users describe their ideal ski trip
  * Features:
  * - Large text area for natural language input
  * - "Select Manually" button to open filter modal
- * - Auto-detected filter pills
  * - Submit button
  */
 function SearchPage() {
@@ -19,12 +18,6 @@ function SearchPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [manualFilters, setManualFilters] = useState(null)
-  const [detectedFilters, setDetectedFilters] = useState([
-    'Location',
-    'Dates', 
-    'Budget',
-    'Skill Level'
-  ])
 
   const handleSaveFilters = (filters) => {
     console.log('Saved filters:', filters)
@@ -73,9 +66,11 @@ function SearchPage() {
         minBlueKm: manualFilters?.minBlueKm,
         minRedKm: manualFilters?.minRedKm,
         minBlackKm: manualFilters?.minBlackKm,
-        // Infrastructure filters
         minLifts: manualFilters?.minLifts,
-        maxPricePerDay: manualFilters?.maxPricePerDay
+        maxPricePerDay: manualFilters?.maxPricePerDay,
+        // Transfer filters
+        maxTransferTime: manualFilters?.maxTransferTime,
+        transferTypes: manualFilters?.transferTypes
       })
 
       console.log('API Response:', response)
@@ -144,18 +139,6 @@ function SearchPage() {
             <ArrowRight size={24} />
           </button>
         </form>
-
-        {/* Detected Filter Pills */}
-        {detectedFilters.length > 0 && (
-          <div style={styles.filterPills}>
-            {detectedFilters.map((filter, index) => (
-              <div key={index} style={styles.pill}>
-                <span style={styles.pillIcon}>✓</span>
-                <span>{filter}</span>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
 
       {/* Filter Modal */}
@@ -266,26 +249,6 @@ const styles = {
     transition: 'all 0.2s',
     flexShrink: 0,
     cursor: 'pointer',
-  },
-  filterPills: {
-    display: 'flex',
-    gap: '0.75rem',
-    padding: '0 1.5rem 1.5rem',
-    flexWrap: 'wrap',
-  },
-  pill: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.5rem',
-    padding: '0.5rem 1rem',
-    backgroundColor: 'var(--ice-blue)',
-    color: 'var(--glacier-blue)',
-    borderRadius: '20px',
-    fontSize: '0.9rem',
-    fontWeight: '500',
-  },
-  pillIcon: {
-    fontSize: '0.8rem',
   },
 }
 
