@@ -3,6 +3,7 @@ const flightService = require('./flightService');
 const hotelService = require('./hotelService');
 const resortService = require('./resortService');
 const osmService = require('./osmService');
+const transportService = require('./transportService');
 
 class AIService {
   constructor() {
@@ -161,6 +162,31 @@ class AIService {
             required: ['latitude', 'longitude']
           }
         }
+      },
+      {
+        type: 'function',
+        function: {
+          name: 'get_transportation_guidance',
+          description: 'Get general guidance on ground transportation options from airport or major city to ski resort. Returns typical transportation options with rough time estimates and costs. Use this when planning trips to provide users with transfer information.',
+          parameters: {
+            type: 'object',
+            properties: {
+              from_location: {
+                type: 'string',
+                description: 'Starting point - airport code (e.g., GVA, ZRH, INN) or city name'
+              },
+              resort_name: {
+                type: 'string',
+                description: 'Destination ski resort name'
+              },
+              country: {
+                type: 'string',
+                description: 'Country where the resort is located'
+              }
+            },
+            required: ['from_location', 'resort_name', 'country']
+          }
+        }
       }
     ];
   }
@@ -210,6 +236,11 @@ class AIService {
           restaurants: result.food_stats.restaurants_like,
           nightlife: result.food_stats.nightlife_total
         });
+      } else if (functionName === 'get_transportation_guidance') {
+        console.log('🚌 Calling transport service...');
+        result = await transportService.getTransportationGuidance(args.from_location, args.resort_name, args.country);
+        console.log(`✅ Transport service returned transportation guidance`);
+        console.log('Transport options:', result.options ? result.options.length : 'N/A');
       } else {
         throw new Error(`Unknown function: ${functionName}`);
       }
@@ -250,24 +281,28 @@ class AIService {
         role: 'system',
         content: `You are an expert ski trip planner with access to real-time data.
 
-IMPORTANT: You have access to FOUR tools:
+IMPORTANT: You have access to FIVE tools:
 1. search_resorts - YOUR custom ski resort database with detailed info (ratings, piste km, difficulty, prices, altitude)
 2. search_flights - Real flight search via Amadeus
 3. search_hotels - Real hotel search via Booking.com
 4. analyze_location_amenities - Detailed location analysis via OpenStreetMap (lifts, runs, ski schools, amenities, nightlife, etc.)
+5. get_transportation_guidance - Ground transportation options from airport/city to resort with time and cost estimates
 
 WORKFLOW:
 1. ALWAYS start by searching resorts using search_resorts to find the best matches
 2. Then search flights to the nearest airport
-3. Then search hotels near the chosen resort using coordinates from resort data
-4. OPTIONALLY use analyze_location_amenities to get detailed local information about amenities, nightlife, and facilities
-5. Analyze all data together
+3. Then get transportation guidance from the airport to the resort
+4. Then search hotels near the chosen resort using coordinates from resort data
+5. OPTIONALLY use analyze_location_amenities to get detailed local information about amenities, nightlife, and facilities
+6. Analyze all data together
 
 IMPORTANT CONSTRAINTS:
 - Only search ONE destination (pick the best resort from your search)
 - APIs return limited results, use them wisely
 - ALWAYS use the resort database first to make informed decisions
 - Use OSM analysis when user cares about specific amenities, nightlife, or local facilities
+- ALWAYS use transportation guidance to help users understand how to get to the resort
+- If user specifies transport constraints (e.g., "within 3 hours of airport"), use transportation info to filter/rank resorts
 
 Resort Database Info:
 - Contains real data: ratings, piste km (blue/red/black), lift counts, prices, altitude
@@ -279,6 +314,12 @@ OSM Location Analysis Info:
 - Shows nightlife (bars, clubs), restaurants, shops (including ski rental)
 - Reveals public transport, parking, and family facilities (pools, spas, playgrounds)
 - Use when users ask about "nightlife", "amenities", "après-ski", "facilities", or "local area"
+
+Transportation Guidance Info:
+- Provides typical ground transportation options (shuttle bus, car rental, train, public bus, etc.)
+- Includes rough time estimates and costs in EUR
+- Use this for ALL trip planning to help users understand resort accessibility
+- If user mentions transport preferences, use this to inform your resort recommendations
 
 Airport mapping:
 - Geneva (GVA): French/Swiss Alps (Val Thorens, Chamonix, Verbier)
@@ -315,6 +356,24 @@ After gathering all data, respond with a JSON object (and ONLY JSON, no other te
           "duration": "6h",
           "stops": 1
         }
+      },
+      "transportation": {
+        "from": "Geneva Airport (GVA)",
+        "to": "Resort Name",
+        "options": [
+          {
+            "mode": "shuttle_bus",
+            "duration_minutes": 150,
+            "cost_eur": 70,
+            "description": "Direct shuttle service"
+          },
+          {
+            "mode": "car_rental",
+            "duration_minutes": 120,
+            "cost_eur": 50,
+            "description": "Drive via A43 highway"
+          }
+        ]
       },
       "hotel": {
         "name": "Hotel Name",

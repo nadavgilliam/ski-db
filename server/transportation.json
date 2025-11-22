@@ -1,0 +1,364 @@
+[dotenv@17.2.3] injecting env (5) from .env -- tip: ⚙️  override existing env vars with { override: true }
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  override existing env vars with { override: true }
+Testing Transportation Guidance (Real API Calls)...
+
+⚠️  WARNING: This test makes real OpenAI API calls and will cost money!
+
+================================================================================
+🧪 TEST: Geneva Airport to Val Thorens (French Alps)
+================================================================================
+🚌 Fetching transportation guidance from GVA to Val Thorens, France
+📄 Transportation guidance response: {
+  "options": [
+    {
+      "mode": "shuttle_bus",
+      "provider": "AlpyBus",
+      "duration_minutes": 180,
+      "cost_eur": 80,
+      "cost_type": "per_person",
+      "description": "Direct shuttle service from Geneva Airport to Val Thorens. Operates multiple times a day and costs approximately €80 per person one way."
+    },
+    {
+      "mode": "train_and_bus",
+      "provider": "SNCF and Altibus",
+      "duration_minutes": 240,
+      "cost_eur": 70,
+      "cost_type": "per_person",
+      "description": "Take a train from Geneva to Moutiers, then transfer to an Altibus service to Val Thorens. Total cost is around €70 per person one way."
+    },
+    {
+      "mode": "car_rental",
+      "provider": "Hertz",
+      "duration_minutes": 150,
+      "cost_eur": 100,
+      "cost_type": "per_day",
+      "description": "Rent a car from Geneva Airport. The drive to Val Thorens takes about 2.5 hours. Rental costs approximately €100 per day, excluding fuel and tolls."
+    },
+    {
+      "mode": "public_bus",
+      "provider": "FlixBus",
+      "duration_minutes": 240,
+      "cost_eur": 50,
+      "cost_type": "per_person",
+      "description": "Take a FlixBus from Geneva to Moutiers, then transfer to a local bus to Val Thorens. Total journey costs around €50 per person one way."
+    }
+  ],
+  "notes": "During peak ski season, it is advisable to book transportation in advance due to high demand. Weather conditions can affect travel times, especially for road transport."
+}
+
+✅ SUCCESS! Response structure:
+-------------------------------------------
+{
+  "options": [
+    {
+      "mode": "shuttle_bus",
+      "provider": "AlpyBus",
+      "duration_minutes": 180,
+      "cost_eur": 80,
+      "cost_type": "per_person",
+      "description": "Direct shuttle service from Geneva Airport to Val Thorens. Operates multiple times a day and costs approximately €80 per person one way."
+    },
+    {
+      "mode": "train_and_bus",
+      "provider": "SNCF and Altibus",
+      "duration_minutes": 240,
+      "cost_eur": 70,
+      "cost_type": "per_person",
+      "description": "Take a train from Geneva to Moutiers, then transfer to an Altibus service to Val Thorens. Total cost is around €70 per person one way."
+    },
+    {
+      "mode": "car_rental",
+      "provider": "Hertz",
+      "duration_minutes": 150,
+      "cost_eur": 100,
+      "cost_type": "per_day",
+      "description": "Rent a car from Geneva Airport. The drive to Val Thorens takes about 2.5 hours. Rental costs approximately €100 per day, excluding fuel and tolls."
+    },
+    {
+      "mode": "public_bus",
+      "provider": "FlixBus",
+      "duration_minutes": 240,
+      "cost_eur": 50,
+      "cost_type": "per_person",
+      "description": "Take a FlixBus from Geneva to Moutiers, then transfer to a local bus to Val Thorens. Total journey costs around €50 per person one way."
+    }
+  ],
+  "notes": "During peak ski season, it is advisable to book transportation in advance due to high demand. Weather conditions can affect travel times, especially for road transport."
+}
+-------------------------------------------
+
+✓ Found 4 transportation options
+
+   Option 1:
+   • Mode: shuttle_bus
+   • Provider: AlpyBus
+   • Duration: 180 minutes (3.0 hours)
+   • Cost: €80 (per_person)
+   • Description: Direct shuttle service from Geneva Airport to Val Thorens. Operates multiple times a day and costs approximately €80 per person one way.
+
+   Option 2:
+   • Mode: train_and_bus
+   • Provider: SNCF and Altibus
+   • Duration: 240 minutes (4.0 hours)
+   • Cost: €70 (per_person)
+   • Description: Take a train from Geneva to Moutiers, then transfer to an Altibus service to Val Thorens. Total cost is around €70 per person one way.
+
+   Option 3:
+   • Mode: car_rental
+   • Provider: Hertz
+   • Duration: 150 minutes (2.5 hours)
+   • Cost: €100 (per_day)
+   • Description: Rent a car from Geneva Airport. The drive to Val Thorens takes about 2.5 hours. Rental costs approximately €100 per day, excluding fuel and tolls.
+
+   Option 4:
+   • Mode: public_bus
+   • Provider: FlixBus
+   • Duration: 240 minutes (4.0 hours)
+   • Cost: €50 (per_person)
+   • Description: Take a FlixBus from Geneva to Moutiers, then transfer to a local bus to Val Thorens. Total journey costs around €50 per person one way.
+
+   📝 Additional notes: During peak ski season, it is advisable to book transportation in advance due to high demand. Weather conditions can affect travel times, especially for road transport.
+
+✅ Test passed!
+
+⏳ Waiting 2 seconds before next test...
+
+================================================================================
+🧪 TEST: Zurich Airport to Zermatt (Swiss Alps)
+================================================================================
+🚌 Fetching transportation guidance from ZRH to Zermatt, Switzerland
+📄 Transportation guidance response: {
+  "options": [
+    {
+      "mode": "train",
+      "provider": "Swiss Federal Railways (SBB)",
+      "duration_minutes": 210,
+      "cost_eur": 80,
+      "cost_type": "one_time",
+      "description": "Take a direct train from Zurich Airport to Visp, then transfer to the Matterhorn Gotthard Bahn train to Zermatt. Total travel time is approximately 3.5 hours."
+    },
+    {
+      "mode": "shuttle_bus",
+      "provider": "Alpine Express",
+      "duration_minutes": 240,
+      "cost_eur": 100,
+      "cost_type": "one_time",
+      "description": "A direct shuttle service from Zurich Airport to Zermatt. The journey takes about 4 hours, with door-to-door service."
+    },
+    {
+      "mode": "car_rental",
+      "provider": "Hertz",
+      "duration_minutes": 210,
+      "cost_eur": 100,
+      "cost_type": "per_day",
+      "description": "Rent a car from Zurich Airport and drive to Täsch, the closest car-accessible town to Zermatt. Park in Täsch and take a shuttle train to Zermatt. Car rental costs around €100 per day, plus parking fees in Täsch."
+    },
+    {
+      "mode": "train_and_bus",
+      "provider": "Swiss Federal Railways (SBB) and local bus",
+      "duration_minutes": 240,
+      "cost_eur": 90,
+      "cost_type": "one_time",
+      "description": "Take a train from Zurich Airport to Visp, then transfer to a bus service that takes you to Täsch. From Täsch, take the shuttle train to Zermatt. Total travel time is about 4 hours."
+    }
+  ],
+  "notes": "Zermatt is a car-free village, so any car travel will require parking in Täsch and taking a shuttle train to Zermatt. Train travel is highly recommended for its convenience and scenic views. Consider purchasing a Swiss Travel Pass for unlimited travel on the Swiss Travel System network, which may offer savings if you plan multiple trips."
+}
+
+✅ SUCCESS! Response structure:
+-------------------------------------------
+{
+  "options": [
+    {
+      "mode": "train",
+      "provider": "Swiss Federal Railways (SBB)",
+      "duration_minutes": 210,
+      "cost_eur": 80,
+      "cost_type": "one_time",
+      "description": "Take a direct train from Zurich Airport to Visp, then transfer to the Matterhorn Gotthard Bahn train to Zermatt. Total travel time is approximately 3.5 hours."
+    },
+    {
+      "mode": "shuttle_bus",
+      "provider": "Alpine Express",
+      "duration_minutes": 240,
+      "cost_eur": 100,
+      "cost_type": "one_time",
+      "description": "A direct shuttle service from Zurich Airport to Zermatt. The journey takes about 4 hours, with door-to-door service."
+    },
+    {
+      "mode": "car_rental",
+      "provider": "Hertz",
+      "duration_minutes": 210,
+      "cost_eur": 100,
+      "cost_type": "per_day",
+      "description": "Rent a car from Zurich Airport and drive to Täsch, the closest car-accessible town to Zermatt. Park in Täsch and take a shuttle train to Zermatt. Car rental costs around €100 per day, plus parking fees in Täsch."
+    },
+    {
+      "mode": "train_and_bus",
+      "provider": "Swiss Federal Railways (SBB) and local bus",
+      "duration_minutes": 240,
+      "cost_eur": 90,
+      "cost_type": "one_time",
+      "description": "Take a train from Zurich Airport to Visp, then transfer to a bus service that takes you to Täsch. From Täsch, take the shuttle train to Zermatt. Total travel time is about 4 hours."
+    }
+  ],
+  "notes": "Zermatt is a car-free village, so any car travel will require parking in Täsch and taking a shuttle train to Zermatt. Train travel is highly recommended for its convenience and scenic views. Consider purchasing a Swiss Travel Pass for unlimited travel on the Swiss Travel System network, which may offer savings if you plan multiple trips."
+}
+-------------------------------------------
+
+✓ Found 4 transportation options
+
+   Option 1:
+   • Mode: train
+   • Provider: Swiss Federal Railways (SBB)
+   • Duration: 210 minutes (3.5 hours)
+   • Cost: €80 (one_time)
+   • Description: Take a direct train from Zurich Airport to Visp, then transfer to the Matterhorn Gotthard Bahn train to Zermatt. Total travel time is approximately 3.5 hours.
+
+   Option 2:
+   • Mode: shuttle_bus
+   • Provider: Alpine Express
+   • Duration: 240 minutes (4.0 hours)
+   • Cost: €100 (one_time)
+   • Description: A direct shuttle service from Zurich Airport to Zermatt. The journey takes about 4 hours, with door-to-door service.
+
+   Option 3:
+   • Mode: car_rental
+   • Provider: Hertz
+   • Duration: 210 minutes (3.5 hours)
+   • Cost: €100 (per_day)
+   • Description: Rent a car from Zurich Airport and drive to Täsch, the closest car-accessible town to Zermatt. Park in Täsch and take a shuttle train to Zermatt. Car rental costs around €100 per day, plus parking fees in Täsch.
+
+   Option 4:
+   • Mode: train_and_bus
+   • Provider: Swiss Federal Railways (SBB) and local bus
+   • Duration: 240 minutes (4.0 hours)
+   • Cost: €90 (one_time)
+   • Description: Take a train from Zurich Airport to Visp, then transfer to a bus service that takes you to Täsch. From Täsch, take the shuttle train to Zermatt. Total travel time is about 4 hours.
+
+   📝 Additional notes: Zermatt is a car-free village, so any car travel will require parking in Täsch and taking a shuttle train to Zermatt. Train travel is highly recommended for its convenience and scenic views. Consider purchasing a Swiss Travel Pass for unlimited travel on the Swiss Travel System network, which may offer savings if you plan multiple trips.
+
+✅ Test passed!
+
+⏳ Waiting 2 seconds before next test...
+
+================================================================================
+🧪 TEST: Innsbruck Airport to St. Anton (Austrian Alps)
+================================================================================
+🚌 Fetching transportation guidance from INN to St. Anton, Austria
+📄 Transportation guidance response: {
+  "options": [
+    {
+      "mode": "shuttle_bus",
+      "provider": "Four Seasons Travel",
+      "duration_minutes": 75,
+      "cost_eur": 50,
+      "cost_type": "per_person",
+      "description": "Direct shuttle service from Innsbruck Airport to St. Anton, with departures aligned with flight arrivals."
+    },
+    {
+      "mode": "train",
+      "provider": "ÖBB (Austrian Federal Railways)",
+      "duration_minutes": 100,
+      "cost_eur": 20,
+      "cost_type": "per_person",
+      "description": "Take a train from Innsbruck Hauptbahnhof to St. Anton am Arlberg station. Trains run frequently throughout the day."
+    },
+    {
+      "mode": "car_rental",
+      "provider": "Hertz",
+      "duration_minutes": 75,
+      "cost_eur": 70,
+      "cost_type": "per_day",
+      "description": "Rent a car from Innsbruck Airport. The drive to St. Anton takes approximately 1 hour and 15 minutes via A12 and S16 highways."
+    },
+    {
+      "mode": "public_bus",
+      "provider": "Postbus",
+      "duration_minutes": 120,
+      "cost_eur": 30,
+      "cost_type": "per_person",
+      "description": "Take a public bus from Innsbruck to St. Anton, which may include a transfer. Buses are less frequent than trains."
+    }
+  ],
+  "notes": "St. Anton is well-connected by train and road, making it accessible from Innsbruck. During peak ski season, booking in advance is recommended for shuttle services and car rentals. Train travel offers a scenic route through the Alps."
+}
+
+✅ SUCCESS! Response structure:
+-------------------------------------------
+{
+  "options": [
+    {
+      "mode": "shuttle_bus",
+      "provider": "Four Seasons Travel",
+      "duration_minutes": 75,
+      "cost_eur": 50,
+      "cost_type": "per_person",
+      "description": "Direct shuttle service from Innsbruck Airport to St. Anton, with departures aligned with flight arrivals."
+    },
+    {
+      "mode": "train",
+      "provider": "ÖBB (Austrian Federal Railways)",
+      "duration_minutes": 100,
+      "cost_eur": 20,
+      "cost_type": "per_person",
+      "description": "Take a train from Innsbruck Hauptbahnhof to St. Anton am Arlberg station. Trains run frequently throughout the day."
+    },
+    {
+      "mode": "car_rental",
+      "provider": "Hertz",
+      "duration_minutes": 75,
+      "cost_eur": 70,
+      "cost_type": "per_day",
+      "description": "Rent a car from Innsbruck Airport. The drive to St. Anton takes approximately 1 hour and 15 minutes via A12 and S16 highways."
+    },
+    {
+      "mode": "public_bus",
+      "provider": "Postbus",
+      "duration_minutes": 120,
+      "cost_eur": 30,
+      "cost_type": "per_person",
+      "description": "Take a public bus from Innsbruck to St. Anton, which may include a transfer. Buses are less frequent than trains."
+    }
+  ],
+  "notes": "St. Anton is well-connected by train and road, making it accessible from Innsbruck. During peak ski season, booking in advance is recommended for shuttle services and car rentals. Train travel offers a scenic route through the Alps."
+}
+-------------------------------------------
+
+✓ Found 4 transportation options
+
+   Option 1:
+   • Mode: shuttle_bus
+   • Provider: Four Seasons Travel
+   • Duration: 75 minutes (1.3 hours)
+   • Cost: €50 (per_person)
+   • Description: Direct shuttle service from Innsbruck Airport to St. Anton, with departures aligned with flight arrivals.
+
+   Option 2:
+   • Mode: train
+   • Provider: ÖBB (Austrian Federal Railways)
+   • Duration: 100 minutes (1.7 hours)
+   • Cost: €20 (per_person)
+   • Description: Take a train from Innsbruck Hauptbahnhof to St. Anton am Arlberg station. Trains run frequently throughout the day.
+
+   Option 3:
+   • Mode: car_rental
+   • Provider: Hertz
+   • Duration: 75 minutes (1.3 hours)
+   • Cost: €70 (per_day)
+   • Description: Rent a car from Innsbruck Airport. The drive to St. Anton takes approximately 1 hour and 15 minutes via A12 and S16 highways.
+
+   Option 4:
+   • Mode: public_bus
+   • Provider: Postbus
+   • Duration: 120 minutes (2.0 hours)
+   • Cost: €30 (per_person)
+   • Description: Take a public bus from Innsbruck to St. Anton, which may include a transfer. Buses are less frequent than trains.
+
+   📝 Additional notes: St. Anton is well-connected by train and road, making it accessible from Innsbruck. During peak ski season, booking in advance is recommended for shuttle services and car rentals. Train travel offers a scenic route through the Alps.
+
+✅ Test passed!
+
+================================================================================
+🏁 ALL TESTS COMPLETED
+================================================================================
