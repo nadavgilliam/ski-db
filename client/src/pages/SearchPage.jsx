@@ -54,18 +54,27 @@ function SearchPage() {
       // Call the backend API
       const response = await searchSkiTrips({
         query: searchQuery,
-        ...manualFilters,
-        origin: manualFilters?.departureCity || 'Tel Aviv',
+        origin: manualFilters?.departureCity || 'Tel Aviv',  // Mandatory with default
+        adults: manualFilters?.adults || 2,                   // Mandatory with default
         dates: manualFilters?.dates?.start && manualFilters?.dates?.end ? {
           departure: manualFilters.dates.start,
           return: manualFilters.dates.end
-        } : {
-          departure: '2026-01-15',
-          return: '2026-01-20'
-        },
-        adults: manualFilters?.adults || 2,
+        } : undefined,  // Optional - only send if provided
         budget: manualFilters?.budget,
-        preferences: searchQuery
+        preferences: searchQuery,
+        // Resort filters
+        countries: manualFilters?.countries,
+        resortNames: manualFilters?.resortNames,
+        minRating: manualFilters?.minRating,
+        // Piste/Difficulty filters
+        minPisteKm: manualFilters?.minPisteKm,
+        maxPisteKm: manualFilters?.maxPisteKm,
+        minBlueKm: manualFilters?.minBlueKm,
+        minRedKm: manualFilters?.minRedKm,
+        minBlackKm: manualFilters?.minBlackKm,
+        // Infrastructure filters
+        minLifts: manualFilters?.minLifts,
+        maxPricePerDay: manualFilters?.maxPricePerDay
       })
 
       console.log('API Response:', response)

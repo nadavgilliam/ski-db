@@ -25,13 +25,23 @@ export async function searchSkiTrips(searchData) {
       },
       body: JSON.stringify({
         origin: searchData.origin || 'Tel Aviv',
-        dates: searchData.dates || {
-          departure: '2026-01-15',
-          return: '2026-01-20'
-        },
-        adults: searchData.adults || 2,
+        dates: searchData.dates,
+        adults: searchData.adults,
         budget: searchData.budget,
-        preferences: searchData.query || searchData.preferences
+        preferences: searchData.query || searchData.preferences,
+        // Resort filters
+        countries: searchData.countries,
+        resortNames: searchData.resortNames,
+        minRating: searchData.minRating,
+        // Piste/Difficulty filters
+        minPisteKm: searchData.minPisteKm,
+        maxPisteKm: searchData.maxPisteKm,
+        minBlueKm: searchData.minBlueKm,
+        minRedKm: searchData.minRedKm,
+        minBlackKm: searchData.minBlackKm,
+        // Infrastructure filters
+        minLifts: searchData.minLifts,
+        maxPricePerDay: searchData.maxPricePerDay
       })
     })
 

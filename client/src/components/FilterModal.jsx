@@ -125,10 +125,10 @@ function GeneralFilters({ filters, updateFilter }) {
   return (
     <div style={styles.filterSection}>
       <h3 style={styles.sectionTitle}>General Preferences</h3>
-      
+
       {/* Departure City */}
       <div style={styles.filterGroup}>
-        <label style={styles.label}>Departure City</label>
+        <label style={styles.label}>Departure City (for flights)</label>
         <input
           type="text"
           placeholder="e.g., Tel Aviv, London, New York"
@@ -136,12 +136,13 @@ function GeneralFilters({ filters, updateFilter }) {
           onChange={(e) => updateFilter('departureCity', e.target.value)}
           style={styles.input}
         />
+        <p style={styles.hint}>Leave empty to default to Tel Aviv</p>
       </div>
 
       {/* Travel Dates */}
       <div style={styles.filterRow}>
         <div style={styles.filterGroup}>
-          <label style={styles.label}>Check-in Date</label>
+          <label style={styles.label}>Departure Date (outbound flight)</label>
           <input
             type="date"
             value={filters.dates.start}
@@ -150,7 +151,7 @@ function GeneralFilters({ filters, updateFilter }) {
           />
         </div>
         <div style={styles.filterGroup}>
-          <label style={styles.label}>Check-out Date</label>
+          <label style={styles.label}>Return Date (return flight)</label>
           <input
             type="date"
             value={filters.dates.end}
@@ -162,7 +163,7 @@ function GeneralFilters({ filters, updateFilter }) {
 
       {/* Number of Adults */}
       <div style={styles.filterGroup}>
-        <label style={styles.label}>Number of Adults</label>
+        <label style={styles.label}>Number of Adult Travelers</label>
         <input
           type="number"
           min="1"
@@ -174,14 +175,15 @@ function GeneralFilters({ filters, updateFilter }) {
 
       {/* Budget */}
       <div style={styles.filterGroup}>
-        <label style={styles.label}>Total Budget (EUR)</label>
+        <label style={styles.label}>Total Trip Budget (EUR)</label>
         <input
           type="number"
-          placeholder="e.g., 2500"
+          placeholder="e.g., 2500 - leave empty for flexible budget"
           value={filters.budget}
           onChange={(e) => updateFilter('budget', e.target.value)}
           style={styles.input}
         />
+        <p style={styles.hint}>Total budget for flights, hotels, and ski passes combined</p>
       </div>
     </div>
   )
@@ -189,37 +191,57 @@ function GeneralFilters({ filters, updateFilter }) {
 
 // Resort Filters Panel
 function ResortFilters({ filters, updateFilter }) {
+  const [includeCountriesText, setIncludeCountriesText] = React.useState('');
+  const [excludeCountriesText, setExcludeCountriesText] = React.useState('');
+
+  const handleIncludeCountriesChange = (text) => {
+    setIncludeCountriesText(text);
+    const countries = text.split(',').map(c => c.trim()).filter(c => c.length > 0);
+    updateFilter('countries', { ...filters.countries, include: countries });
+  };
+
+  const handleExcludeCountriesChange = (text) => {
+    setExcludeCountriesText(text);
+    const countries = text.split(',').map(c => c.trim()).filter(c => c.length > 0);
+    updateFilter('countries', { ...filters.countries, exclude: countries });
+  };
+
   return (
     <div style={styles.filterSection}>
       <h3 style={styles.sectionTitle}>Resort Preferences</h3>
-      
+
       <div style={styles.filterGroup}>
-        <label style={styles.label}>Include Countries</label>
+        <label style={styles.label}>Include Countries (only search in these)</label>
         <input
           type="text"
           placeholder="e.g., France, Switzerland, Austria"
+          value={includeCountriesText}
+          onChange={(e) => handleIncludeCountriesChange(e.target.value)}
           style={styles.input}
         />
-        <p style={styles.hint}>Comma-separated list</p>
+        <p style={styles.hint}>Comma-separated list - leave empty for all countries</p>
       </div>
 
       <div style={styles.filterGroup}>
-        <label style={styles.label}>Exclude Countries</label>
+        <label style={styles.label}>Exclude Countries (avoid these)</label>
         <input
           type="text"
           placeholder="e.g., Italy"
+          value={excludeCountriesText}
+          onChange={(e) => handleExcludeCountriesChange(e.target.value)}
           style={styles.input}
         />
+        <p style={styles.hint}>Comma-separated list - leave empty to exclude none</p>
       </div>
 
       <div style={styles.filterGroup}>
-        <label style={styles.label}>Minimum Rating</label>
+        <label style={styles.label}>Minimum Resort Rating (0-5 stars)</label>
         <input
           type="number"
           min="0"
           max="5"
           step="0.1"
-          placeholder="e.g., 4.5"
+          placeholder="e.g., 4.5 - leave empty for any rating"
           value={filters.minRating}
           onChange={(e) => updateFilter('minRating', e.target.value)}
           style={styles.input}
@@ -234,23 +256,23 @@ function DifficultyFilters({ filters, updateFilter }) {
   return (
     <div style={styles.filterSection}>
       <h3 style={styles.sectionTitle}>Piste & Difficulty</h3>
-      
+
       <div style={styles.filterRow}>
         <div style={styles.filterGroup}>
-          <label style={styles.label}>Min Total Piste (km)</label>
+          <label style={styles.label}>Min Total Piste Length (km)</label>
           <input
             type="number"
-            placeholder="e.g., 50"
+            placeholder="e.g., 50 - leave empty for no minimum"
             value={filters.minPisteKm}
             onChange={(e) => updateFilter('minPisteKm', e.target.value)}
             style={styles.input}
           />
         </div>
         <div style={styles.filterGroup}>
-          <label style={styles.label}>Max Total Piste (km)</label>
+          <label style={styles.label}>Max Total Piste Length (km)</label>
           <input
             type="number"
-            placeholder="e.g., 300"
+            placeholder="e.g., 300 - leave empty for no maximum"
             value={filters.maxPisteKm}
             onChange={(e) => updateFilter('maxPisteKm', e.target.value)}
             style={styles.input}
@@ -259,36 +281,39 @@ function DifficultyFilters({ filters, updateFilter }) {
       </div>
 
       <div style={styles.filterGroup}>
-        <label style={styles.label}>Min Blue Slopes (km)</label>
+        <label style={styles.label}>Min Blue Slopes - Beginner (km)</label>
         <input
           type="number"
-          placeholder="For beginner-friendly resorts"
+          placeholder="e.g., 20 - for beginner-friendly resorts"
           value={filters.minBlueKm}
           onChange={(e) => updateFilter('minBlueKm', e.target.value)}
           style={styles.input}
         />
+        <p style={styles.hint}>Leave empty if no requirement for blue slopes</p>
       </div>
 
       <div style={styles.filterGroup}>
-        <label style={styles.label}>Min Red Slopes (km)</label>
+        <label style={styles.label}>Min Red Slopes - Intermediate (km)</label>
         <input
           type="number"
-          placeholder="For intermediate skiers"
+          placeholder="e.g., 30 - for intermediate skiers"
           value={filters.minRedKm}
           onChange={(e) => updateFilter('minRedKm', e.target.value)}
           style={styles.input}
         />
+        <p style={styles.hint}>Leave empty if no requirement for red slopes</p>
       </div>
 
       <div style={styles.filterGroup}>
-        <label style={styles.label}>Min Black Slopes (km)</label>
+        <label style={styles.label}>Min Black Slopes - Advanced (km)</label>
         <input
           type="number"
-          placeholder="For advanced skiers"
+          placeholder="e.g., 15 - for advanced/expert skiers"
           value={filters.minBlackKm}
           onChange={(e) => updateFilter('minBlackKm', e.target.value)}
           style={styles.input}
         />
+        <p style={styles.hint}>Leave empty if no requirement for black slopes</p>
       </div>
     </div>
   )
@@ -299,28 +324,29 @@ function InfrastructureFilters({ filters, updateFilter }) {
   return (
     <div style={styles.filterSection}>
       <h3 style={styles.sectionTitle}>Infrastructure & Pricing</h3>
-      
+
       <div style={styles.filterGroup}>
-        <label style={styles.label}>Minimum Lifts</label>
+        <label style={styles.label}>Minimum Number of Ski Lifts</label>
         <input
           type="number"
-          placeholder="e.g., 20"
+          placeholder="e.g., 20 - leave empty for no minimum"
           value={filters.minLifts}
           onChange={(e) => updateFilter('minLifts', e.target.value)}
           style={styles.input}
         />
-        <p style={styles.hint}>More lifts typically means larger resort</p>
+        <p style={styles.hint}>More lifts typically means larger resort with better infrastructure</p>
       </div>
 
       <div style={styles.filterGroup}>
-        <label style={styles.label}>Max Day Pass Price (EUR)</label>
+        <label style={styles.label}>Maximum Daily Ski Pass Price (EUR)</label>
         <input
           type="number"
-          placeholder="e.g., 60"
+          placeholder="e.g., 60 - leave empty for no price limit"
           value={filters.maxPricePerDay}
           onChange={(e) => updateFilter('maxPricePerDay', e.target.value)}
           style={styles.input}
         />
+        <p style={styles.hint}>Price per adult per day for ski pass access</p>
       </div>
     </div>
   )
