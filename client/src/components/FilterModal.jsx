@@ -47,6 +47,12 @@ function FilterModal({ isOpen, onClose, onSave }) {
     // Flights
     maxFlightDuration: '',
     nonStopOnly: false,
+
+    // Accommodation
+    minHotelStars: '',
+    propertyTypes: [],
+    freeCancellation: false,
+    minReviewCount: false,
   })
 
   // Filter categories for sidebar
@@ -54,6 +60,7 @@ function FilterModal({ isOpen, onClose, onSave }) {
     { id: 'general', icon: '⚙️', label: 'General' },
     { id: 'resort', icon: '🗺️', label: 'Destination Preferences' },
     { id: 'difficulty', icon: '⛷️', label: 'Ski Resort' },
+    { id: 'accommodation', icon: '🏨', label: 'Accommodation' },
     { id: 'flights', icon: '✈️', label: 'Flights' },
     { id: 'transfer', icon: '🚗', label: 'Transfer' },
   ]
@@ -111,6 +118,9 @@ function FilterModal({ isOpen, onClose, onSave }) {
             )}
             {selectedCategory === 'difficulty' && (
               <DifficultyFilters filters={filters} updateFilter={updateFilter} />
+            )}
+            {selectedCategory === 'accommodation' && (
+              <AccommodationFilters filters={filters} updateFilter={updateFilter} />
             )}
             {selectedCategory === 'flights' && (
               <FlightFilters filters={filters} updateFilter={updateFilter} />
@@ -421,6 +431,90 @@ function DifficultyFilters({ filters, updateFilter }) {
           style={styles.input}
         />
         <p style={styles.hint}>Price per adult per day for ski pass access</p>
+      </div>
+    </div>
+  )
+}
+
+// Accommodation Filters Panel
+function AccommodationFilters({ filters, updateFilter}) {
+  const propertyTypeOptions = [
+    { value: 'hotel', label: 'Hotels' },
+    { value: 'apartment', label: 'Apartments' },
+    { value: 'chalet', label: 'Chalets' },
+    { value: 'hostel', label: 'Hostels' },
+    { value: 'bnb', label: 'B&Bs' },
+  ];
+
+  const handlePropertyTypeToggle = (value) => {
+    const currentTypes = filters.propertyTypes || [];
+    const newTypes = currentTypes.includes(value)
+      ? currentTypes.filter(t => t !== value)
+      : [...currentTypes, value];
+    updateFilter('propertyTypes', newTypes);
+  };
+
+  return (
+    <div style={styles.filterSection}>
+      <h3 style={styles.sectionTitle}>Accommodation Preferences</h3>
+
+      <div style={styles.filterGroup}>
+        <label style={styles.label}>Minimum Hotel Star Rating</label>
+        <input
+          type="number"
+          min="1"
+          max="5"
+          step="1"
+          placeholder="e.g., 3, 4, or 5 - leave empty for any star rating"
+          value={filters.minHotelStars}
+          onChange={(e) => updateFilter('minHotelStars', e.target.value)}
+          style={styles.input}
+        />
+        <p style={styles.hint}>Filter hotels by minimum star rating (1-5 stars). Higher star ratings typically mean better amenities and service.</p>
+      </div>
+
+      <div style={styles.filterGroup}>
+        <label style={styles.label}>Property Types</label>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.5rem' }}>
+          {propertyTypeOptions.map(option => (
+            <label key={option.value} style={styles.checkboxLabel}>
+              <input
+                type="checkbox"
+                checked={filters.propertyTypes.includes(option.value)}
+                onChange={() => handlePropertyTypeToggle(option.value)}
+                style={styles.checkbox}
+              />
+              <span>{option.label}</span>
+            </label>
+          ))}
+        </div>
+        <p style={styles.hint}>Select one or more property types - leave empty to show all types</p>
+      </div>
+
+      <div style={styles.filterGroup}>
+        <label style={styles.checkboxLabel}>
+          <input
+            type="checkbox"
+            checked={filters.freeCancellation}
+            onChange={(e) => updateFilter('freeCancellation', e.target.checked)}
+            style={styles.checkbox}
+          />
+          <span>Free Cancellation Only</span>
+        </label>
+        <p style={styles.hint}>Only show properties that offer free cancellation for flexible booking</p>
+      </div>
+
+      <div style={styles.filterGroup}>
+        <label style={styles.checkboxLabel}>
+          <input
+            type="checkbox"
+            checked={filters.minReviewCount}
+            onChange={(e) => updateFilter('minReviewCount', e.target.checked)}
+            style={styles.checkbox}
+          />
+          <span>Only well-reviewed properties (50+ reviews)</span>
+        </label>
+        <p style={styles.hint}>Only show properties with 50 or more reviews for more reliable ratings</p>
       </div>
     </div>
   )

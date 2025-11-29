@@ -77,6 +77,31 @@ class AIService {
               rooms: {
                 type: 'number',
                 description: 'Number of rooms needed (default: 1)'
+              },
+              orderBy: {
+                type: 'string',
+                enum: ['distance', 'price', 'popularity', 'review_score'],
+                description: 'How to sort hotel results. Options: "distance" (closest first), "price" (cheapest first), "popularity" (most popular first), "review_score" (highest rated first). Default: review_score. Use "distance" when proximity matters most, "price" for budget-conscious users, "review_score" for quality-focused users.'
+              },
+              minStarRating: {
+                type: 'number',
+                description: 'Minimum hotel star rating (1-5 stars). Only return hotels with this star rating or higher. Leave empty for no star rating requirement.'
+              },
+              propertyTypes: {
+                type: 'array',
+                items: {
+                  type: 'string',
+                  enum: ['hotel', 'apartment', 'chalet', 'hostel', 'bnb']
+                },
+                description: 'Filter by property types. Options: "hotel" (Hotels), "apartment" (Apartments), "chalet" (Chalets), "hostel" (Hostels), "bnb" (B&Bs). Pass as array (e.g., ["hotel", "chalet"]). Leave empty to show all property types.'
+              },
+              freeCancellation: {
+                type: 'boolean',
+                description: 'If true, only return properties that offer free cancellation. Use this when users want flexible booking options.'
+              },
+              minReviewCount: {
+                type: 'boolean',
+                description: 'If true, only return properties with 50 or more reviews (well-reviewed properties with reliable ratings). Use this when users want trusted accommodations.'
               }
             },
             required: ['latitude', 'longitude', 'checkinDate', 'checkoutDate', 'adults']

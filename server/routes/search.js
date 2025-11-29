@@ -34,7 +34,12 @@ router.post('/', async (req, res) => {
       nonStopOnly,
       // Transfer filters
       maxTransferTime,
-      transferTypes
+      transferTypes,
+      // Accommodation filters
+      minHotelStars,
+      propertyTypes,
+      freeCancellation,
+      minReviewCount
     } = req.body;
 
     // Build comprehensive natural language prompt with clear, descriptive filter names
@@ -170,6 +175,41 @@ RESORT QUALITY REQUIREMENTS:`;
       userPrompt += `\n  IMPORTANT: Use the get_transportation_guidance tool. At least one of these transportation types should be available for recommended resorts.`;
     } else {
       userPrompt += `\n- Preferred Transfer Types: All transfer types are acceptable`;
+    }
+
+    // Accommodation filters
+    userPrompt += `\n\nACCOMMODATION PREFERENCES:`;
+    if (minHotelStars) {
+      userPrompt += `\n- Minimum Hotel Star Rating: ${minHotelStars} stars or higher`;
+      userPrompt += `\n  IMPORTANT: When calling search_hotels, you MUST set the minStarRating parameter to ${minHotelStars}. Only show hotels with ${minHotelStars} stars or more.`;
+    } else {
+      userPrompt += `\n- Minimum Hotel Star Rating: No requirement (any star rating acceptable)`;
+    }
+    if (propertyTypes?.length > 0) {
+      const typeLabels = {
+        'hotel': 'Hotels',
+        'apartment': 'Apartments',
+        'chalet': 'Chalets',
+        'hostel': 'Hostels',
+        'bnb': 'B&Bs'
+      };
+      const selectedTypes = propertyTypes.map(t => typeLabels[t] || t).join(', ');
+      userPrompt += `\n- Property Types: ${selectedTypes}`;
+      userPrompt += `\n  IMPORTANT: When calling search_hotels, you MUST set the propertyTypes parameter to [${propertyTypes.map(t => `"${t}"`).join(', ')}]. Only show these property types.`;
+    } else {
+      userPrompt += `\n- Property Types: All property types acceptable (hotels, apartments, chalets, hostels, B&Bs)`;
+    }
+    if (freeCancellation) {
+      userPrompt += `\n- Free Cancellation: YES - Only show properties that offer free cancellation`;
+      userPrompt += `\n  IMPORTANT: When calling search_hotels, you MUST set the freeCancellation parameter to true. Only show properties with free cancellation.`;
+    } else {
+      userPrompt += `\n- Free Cancellation: No requirement (properties with or without free cancellation are acceptable)`;
+    }
+    if (minReviewCount) {
+      userPrompt += `\n- Review Count Threshold: Only show well-reviewed properties (50+ reviews)`;
+      userPrompt += `\n  IMPORTANT: When calling search_hotels, you MUST set the minReviewCount parameter to true. Only show properties with 50 or more reviews.`;
+    } else {
+      userPrompt += `\n- Review Count Threshold: No requirement (all properties regardless of review count are acceptable)`;
     }
 
     userPrompt += `\n\nINSTRUCTIONS:

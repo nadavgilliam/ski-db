@@ -75,7 +75,12 @@ function SearchPage() {
         nonStopOnly: manualFilters?.nonStopOnly,
         // Transfer filters
         maxTransferTime: manualFilters?.maxTransferTime,
-        transferTypes: manualFilters?.transferTypes
+        transferTypes: manualFilters?.transferTypes,
+        // Accommodation filters
+        minHotelStars: manualFilters?.minHotelStars,
+        propertyTypes: manualFilters?.propertyTypes,
+        freeCancellation: manualFilters?.freeCancellation,
+        minReviewCount: manualFilters?.minReviewCount
       })
 
       console.log('API Response:', response)
