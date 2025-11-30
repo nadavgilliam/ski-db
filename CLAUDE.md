@@ -31,6 +31,9 @@ User Query → React Frontend → Express API → GPT-4 Orchestration Layer
 ```bash
 cd server
 node index.js              # Start server on port 3000
+npm start                  # Same as above (uses package.json script)
+npm run dev                # Start with nodemon (auto-restart on file changes)
+npm run debug              # Start with nodemon and Node.js inspector for debugging
 ```
 
 ### Frontend
@@ -52,13 +55,17 @@ python scrape_world_print.py             # Scrape top 10 countries
 ### Running Tests
 ```bash
 cd server
-node tests/test-health.js                    # Health endpoint
-node tests/test-api-endpoint.js              # Full API integration
-node tests/test-resort-service-advanced.js   # Resort database
-node tests/test-flight-service.js            # Amadeus API
-node tests/test-hotel-service.js             # Booking.com API
-node tests/test-osm-service.js               # OpenStreetMap analysis
-node tests/test-ai-service.js                # GPT-4 orchestration
+node tests/test-health.js                      # Health endpoint
+node tests/test-api-endpoint.js                # Full API integration
+node tests/test-resort-service-advanced.js     # Resort database
+node tests/test-flight-service.js              # Amadeus API
+node tests/test-hotel-service.js               # Booking.com API
+node tests/test-osm-service.js                 # OpenStreetMap analysis
+node tests/test-transportation-guidance.js     # Ground transportation guidance
+node tests/test-ai-service.js                  # GPT-4 orchestration (basic)
+node tests/test-ai-service-mock.js             # GPT-4 orchestration (with mocks)
+node tests/test-ai-with-osm.js                 # AI service with OSM analysis
+node tests/check-api-quota.js                  # Check Amadeus API quota
 ```
 
 ## Key Architecture Patterns
@@ -72,19 +79,32 @@ The core innovation is in `server/services/aiService.js`. GPT-4 (gpt-4o model) a
 3. Execute tool calls iteratively (up to 10 iterations)
 4. Combine results into structured recommendations
 
-**Three tools exposed to GPT-4:**
-- `search_resorts` - Query SQLite database with advanced filters
-- `search_flights` - Search Amadeus API for flights
-- `search_hotels` - Search Booking.com by coordinates
+**Five tools exposed to GPT-4:**
+- `search_resorts` - Query SQLite database with advanced filters (country, rating, piste km, difficulty, price, altitude)
+- `search_flights` - Search Amadeus API for flights (with optional nonstop filter)
+- `search_hotels` - Search Booking.com by coordinates (with sorting, star rating, property type filters)
+- `analyze_location_amenities` - Analyze resort location via OpenStreetMap (lifts, runs, ski schools, restaurants, nightlife, etc.)
+- `get_transportation_guidance` - Get ground transportation options from airport/city to resort with time/cost estimates
+
+**Standard AI Workflow:**
+1. Search resorts (at least 3-5) using `search_resorts` with user preferences
+2. Select top 3 resorts that best match user criteria
+3. For EACH of the 3 resorts:
+   - Search flights to nearest airport via `search_flights`
+   - Get transportation guidance from airport to resort via `get_transportation_guidance`
+   - Search hotels near resort using coordinates via `search_hotels`
+   - Optionally analyze local amenities via `analyze_location_amenities` (when user cares about nightlife, facilities, etc.)
+4. Return exactly 3 complete trip options with all data combined
 
 ### Service Layer Pattern
 
 Each external API/database has a dedicated service:
 - `resortService.js` - SQLite queries with advanced filtering (country, rating, piste km, difficulty, price, altitude)
-- `flightService.js` - Amadeus flight search (returns top 3 offers)
-- `hotelService.js` - Booking.com hotel search by lat/long (returns top 5, calculates distance via Haversline)
-- `osmService.js` - OpenStreetMap/Overpass API for detailed location analysis (lifts, runs, ski schools, pass offices, amenities)
-- `aiService.js` - GPT-4 orchestration layer
+- `flightService.js` - Amadeus flight search (returns top 3 offers, supports nonstop filter)
+- `hotelService.js` - Booking.com hotel search by lat/long (returns top 5, calculates distance via Haversine, supports filters for star rating, property type, free cancellation, sorting)
+- `osmService.js` - OpenStreetMap/Overpass API for raw location data (lifts, runs, ski schools, pass offices, amenities, transport, restaurants, nightlife)
+- `transportService.js` - GPT-4-powered transportation guidance from airports/cities to resorts (estimates duration and costs for shuttle, car rental, train, bus options)
+- `aiService.js` - GPT-4 orchestration layer that coordinates all services
 
 ## Database Schema
 
@@ -139,7 +159,7 @@ API communication handled by `src/services/api.js`, which calls `http://localhos
 
 ## OpenStreetMap Service
 
-The `osmService.js` fetches raw OpenStreetMap data via the Overpass API for ski resort locations:
+The `osmService.js` fetches and analyzes OpenStreetMap data via the Overpass API for ski resort locations:
 
 ### Features Queried
 - **Lifts**: Ski lift stations and aerialway infrastructure
@@ -149,22 +169,48 @@ The `osmService.js` fetches raw OpenStreetMap data via the Overpass API for ski 
 - **Public Transport**: Bus stops, train stations, tram stops
 - **Parking**: Parking facilities
 - **Food & Drink**: Restaurants, cafes, bars, nightclubs
-- **Shops**: All shops
+- **Shops**: All shops (including ski rental)
 - **Hotels**: Hotels, guest houses, apartments, chalets, hostels
 - **Family Facilities**: Pools, spas, playgrounds, childcare
 
 ### Technical Details
-- Returns **raw OSM JSON** from Overpass API (no processing or scoring)
+- Fetches raw OSM JSON from Overpass API and analyzes it
+- Returns structured analysis with counts and proximity information
 - Implements file-based caching (`.osm_cache/` directory with MD5 hashed query keys)
 - Retry logic with exponential backoff (3 attempts, 4s base delay)
-- Configurable search radius (default 500m)
+- Configurable search radius (default 500m, configurable up to 1500m)
 - Queries within bounding box with 40% buffer
 
 ### Usage
 ```javascript
 const osmService = require('./services/osmService');
+// Fetch raw OSM data
 const rawOSMData = await osmService.fetchOSMData(45.298, 6.583);
-// Returns: { version, generator, osm3s, elements: [...] }
+// Or get analyzed location data (recommended for AI service)
+const analysis = await osmService.analyzeLocation(45.298, 6.583, "Val Thorens");
+// Returns: { lifts: {...}, runs: {...}, ski_schools: {...}, food_stats: {...}, etc. }
+```
+
+## Transportation Service
+
+The `transportService.js` uses GPT-4 to provide ground transportation guidance:
+
+### Features
+- Estimates transportation options from airports or cities to ski resorts
+- Returns multiple modes: shuttle bus, car rental, train, public bus, combined options
+- Provides duration estimates (in minutes) and costs (in EUR)
+- Indicates cost type (per_day for rentals, one_time for trips)
+
+### Technical Details
+- Uses GPT-4o model with JSON response format
+- Temperature 0.3 for consistent, factual responses
+- Returns structured JSON with options array and optional notes
+
+### Usage
+```javascript
+const transportService = require('./services/transportService');
+const guidance = await transportService.getTransportationGuidance('GVA', 'Val Thorens', 'France');
+// Returns: { options: [{mode, provider, duration_minutes, cost_eur, cost_type, description}], notes: "..." }
 ```
 
 ## Important Implementation Details
@@ -183,10 +229,13 @@ const rawOSMData = await osmService.fetchOSMData(45.298, 6.583);
 ### Backend
 - `server/index.js` - Express app entry point
 - `server/routes/search.js` - API route handlers
-- `server/services/aiService.js` - GPT-4 orchestration (MOST IMPORTANT)
+- `server/services/aiService.js` - GPT-4 orchestration (MOST IMPORTANT - coordinates all other services)
 - `server/services/resortService.js` - Database queries with advanced filtering
+- `server/services/flightService.js` - Amadeus flight search integration
+- `server/services/hotelService.js` - Booking.com hotel search integration
 - `server/services/osmService.js` - OpenStreetMap location analysis
-- `server/config/*.js` - API client initialization
+- `server/services/transportService.js` - GPT-4-powered transportation guidance
+- `server/config/*.js` - API client initialization (Amadeus, OpenAI)
 
 ### Frontend
 - `client/src/main.jsx` - React entry point
