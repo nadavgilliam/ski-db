@@ -10,8 +10,8 @@ router.post('/', async (req, res) => {
     const {
       origin = 'Tel Aviv',  // Mandatory with default
       adults = 2,           // Mandatory with default
-      dates,                // Optional - no default
-      skiDays,              // Optional - number of full ski days
+      dates,
+      skiDays,
       budget,
       preferences,
       // Resort filters

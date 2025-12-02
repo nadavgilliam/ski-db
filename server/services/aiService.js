@@ -374,8 +374,6 @@ Airport mapping:
 
 After gathering all data, respond with a JSON object (and ONLY JSON, no other text):
 
-CRITICAL: The "recommendations" array MUST contain EXACTLY 3 trip options for 3 DIFFERENT resorts.
-
 {
   "recommendations": [
     {
